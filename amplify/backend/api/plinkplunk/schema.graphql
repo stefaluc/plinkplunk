@@ -1,0 +1,24 @@
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+
+type User @model {
+  cognitoId: ID! @primaryKey
+  gamesPlayed: Int @default(value: "0")
+  plunks: Int @default(value: "0")
+  games: [Game] @hasMany
+}
+
+type Game @model {
+  id: ID!
+  player1: User @hasOne
+  player2: User @hasOne
+  player3: User @hasOne
+  player4: User @hasOne
+  score1: Int!
+  score2: Int!
+  plunks1: Int @default(value: "0")
+  plunks2: Int @default(value: "0")
+  plunks3: Int @default(value: "0")
+  plunks4: Int @default(value: "0")
+}

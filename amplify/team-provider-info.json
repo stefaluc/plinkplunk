@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-plinkplunk-dev-201319-authRole",
+      "UnauthRoleArn": "arn:aws:iam::338280507606:role/amplify-plinkplunk-dev-201319-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::338280507606:role/amplify-plinkplunk-dev-201319-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-plinkplunk-dev-201319-deployment",
+      "UnauthRoleName": "amplify-plinkplunk-dev-201319-unauthRole",
+      "StackName": "amplify-plinkplunk-dev-201319",
+      "StackId": "arn:aws:cloudformation:us-east-1:338280507606:stack/amplify-plinkplunk-dev-201319/f3850bf0-e6d8-11ec-bee7-0eb16d400901",
+      "AmplifyAppId": "d1s4ebrl1dcu44"
+    },
+    "categories": {
+      "auth": {
+        "plinkplunkf9c2f11d": {}
+      }
+    }
+  }
+}
