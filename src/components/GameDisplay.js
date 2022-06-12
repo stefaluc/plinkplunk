@@ -9,7 +9,7 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import ListItemText from "@mui/material/ListItemText";
 import {API, graphqlOperation} from "aws-amplify";
-import {listGames, listUserGames} from "../graphql/queries";
+import {listGames, getStats} from "../graphql/queries";
 import Game from "./Game";
 
 const messages = [
@@ -64,11 +64,11 @@ const messages = [
 export default function GameDisplay() {
   const [userGames, setUserGames] = React.useState([]);
 
-  React.useEffect(() => {
-    API.graphql(graphqlOperation(listGames)).then(res => {
-      setUserGames(res.data.listUserGames?.items);
-    });
-  }, [])
+  // React.useEffect(() => {
+  //   API.graphql(graphqlOperation(listGames)).then(res => {
+  //     setUserGames(res.data.listUserGames?.items);
+  //   });
+  // }, [])
 
   return (
     <React.Fragment>

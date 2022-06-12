@@ -1,12 +1,13 @@
 import ListItem from "@mui/material/ListItem";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
-import ListItemText from "@mui/material/ListItemText";
 import Grid from '@mui/material/Grid';
 import * as React from "react";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import ListSubheader from "@mui/material/ListSubheader";
+
+const getNameInitials = (fullName) => {
+  return fullName.match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase();
+}
 
 export default function Game({ primary, person, secondary }) {
   return (
@@ -25,32 +26,40 @@ export default function Game({ primary, person, secondary }) {
         </Box>
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           <Grid item xs={6} container direction="row">
-            <Avatar sx={{ width: '30px', height: '30px'}} alt="Profile Picture" src={person} />
+            <Avatar sx={{ width: '30px', height: '30px', fontSize: '12px'}} alt="Profile Picture">
+              {getNameInitials('Justin Gabriel')}
+            </Avatar>
             <Grid item sx={{marginLeft: '10px'}}>
               <Box sx={{fontSize: '14px'}}>Justin Gabriel</Box>
-              <Box sx={{fontSize: '12px', color: '#333'}}>Plunks: 1</Box>
+              <Box sx={{fontWeight: 'bold', fontSize: '12px', color: '#666'}}>Plunks: 1</Box>
             </Grid>
           </Grid>
           <Grid item xs={6} container direction="row" justifyContent="flex-end">
             <Grid item sx={{marginRight: '10px'}} justifyContent="flex-end">
               <Box sx={{fontSize: '14px', display: 'flex', justifyContent: 'flex-end'}}>Alec Huggins</Box>
-              <Box sx={{fontSize: '12px', color: '#333', display: 'flex', justifyContent: 'flex-end'}}>Plunks: 1</Box>
+              <Box sx={{fontWeight: 'bold', fontSize: '12px', color: '#666', display: 'flex', justifyContent: 'flex-end'}}>Plunks: 1</Box>
             </Grid>
-            <Avatar sx={{ width: '30px', height: '30px' }} alt="Profile Picture" src={person} />
+            <Avatar sx={{ width: '30px', height: '30px', fontSize: '12px'}} alt="Profile Picture">
+              {getNameInitials('Alec Huggins')}
+            </Avatar>
           </Grid>
           <Grid item xs={6} container direction="row">
-            <Avatar sx={{ width: '30px', height: '30px' }} alt="Profile Picture" src={person} />
+            <Avatar sx={{ width: '30px', height: '30px', fontSize: '12px'}} alt="Profile Picture">
+              {getNameInitials('Brett Wilson')}
+            </Avatar>
             <Grid item sx={{marginLeft: '10px'}}>
               <Box sx={{fontSize: '14px'}}>Brett Wilson</Box>
-              <Box sx={{fontSize: '12px', color: '#333'}}>Plunks: 1</Box>
+              <Box sx={{fontWeight: 'bold', fontSize: '12px', color: '#666'}}>Plunks: 1</Box>
             </Grid>
           </Grid>
           <Grid item xs={6} container direction="row" justifyContent="flex-end">
             <Grid item sx={{marginRight: '10px'}}>
               <Box sx={{fontSize: '14px', display: 'flex', justifyContent: 'flex-end'}}>Walter Schemel</Box>
-              <Box sx={{fontSize: '12px', color: '#333', display: 'flex', justifyContent: 'flex-end'}}>Plunks: 1</Box>
+              <Box sx={{fontWeight: 'bold', fontSize: '12px', color: '#666', display: 'flex', justifyContent: 'flex-end'}}>Plunks: 1</Box>
             </Grid>
-            <Avatar sx={{ width: '30px', height: '30px' }} alt="Profile Picture" src={person} />
+            <Avatar sx={{ width: '30px', height: '30px', fontSize: '12px'}} alt="Profile Picture">
+              {getNameInitials('Walter Schemel')}
+            </Avatar>
           </Grid>
         </Grid>
       </ListItem>

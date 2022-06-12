@@ -2,23 +2,42 @@
 # all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
 input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
 
-type User @model {
+type Player @model {
   cognitoId: ID! @primaryKey
-  gamesPlayed: Int @default(value: "0")
-  plunks: Int @default(value: "0")
+  fullName: String!
+  hasProfilePicture: Boolean!
   games: [Game] @hasMany
+  stats: [Stats] @hasMany
 }
 
 type Game @model {
   id: ID!
-  player1: User @hasOne
-  player2: User @hasOne
-  player3: User @hasOne
-  player4: User @hasOne
+  player1: Player @hasOne
+  player2: Player @hasOne
+  player3: Player @hasOne
+  player4: Player @hasOne
+  creator: Player @hasOne
+  playerName1: String!
+  playerName2: String!
+  playerName3: String!
+  playerName4: String!
   score1: Int!
   score2: Int!
-  plunks1: Int @default(value: "0")
-  plunks2: Int @default(value: "0")
-  plunks3: Int @default(value: "0")
-  plunks4: Int @default(value: "0")
+  player1Stats: Stats! @hasOne
+  player2Stats: Stats! @hasOne
+  player3Stats: Stats! @hasOne
+  player4Stats: Stats! @hasOne
+  notes: String
+}
+
+type Stats @model {
+  id: ID!
+  game: Game! @belongsTo
+  player: Player! @belongsTo
+  plunks: Int! @default(value: "0")
+  selfPlunks: Int! @default(value: "0")
+  didWin: Boolean!
+  plinks: Int @default(value: "0")
+  drinks: Int @default(value: "0")
+  points: Int @default(value: "0")
 }

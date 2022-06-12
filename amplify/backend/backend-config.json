@@ -1,6 +1,6 @@
 {
   "auth": {
-    "plinkplunkf9c2f11d": {
+    "plinkplunk": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -10,9 +10,7 @@
         "usernameAttributes": [
           "PHONE_NUMBER"
         ],
-        "signupAttributes": [
-          "EMAIL"
-        ],
+        "signupAttributes": [],
         "passwordProtectionSettings": {
           "passwordPolicyMinLength": 8,
           "passwordPolicyCharacters": []
@@ -22,7 +20,7 @@
           "SMS"
         ],
         "verificationMechanisms": [
-          "EMAIL"
+          "PHONE_NUMBER"
         ]
       }
     }
@@ -42,6 +40,13 @@
           "additionalAuthenticationProviders": []
         }
       }
+    }
+  },
+  "storage": {
+    "userassets": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
     }
   }
 }

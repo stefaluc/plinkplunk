@@ -28,6 +28,8 @@ export default function GameDrawer({ gameDrawerIsOpen, toggleGameDrawer }) {
       ModalProps={{
         keepMounted: true,
       }}
+
+
     >
       <Box
         sx={{

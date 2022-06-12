@@ -3,12 +3,11 @@ import { styled } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import Fab from '@mui/material/Fab';
-import MenuIcon from '@mui/icons-material/Menu';
-import MoreIcon from '@mui/icons-material/MoreVert';
 import CasinoOutlinedIcon from '@mui/icons-material/CasinoOutlined';
-import CasinoIcon from '@mui/icons-material/Casino';
+import Avatar from "@mui/material/Avatar";
+import AppBarMenu from "./AppBarMenu";
+import { Storage } from 'aws-amplify';
 
 const StyledFab = styled(Fab)({
   position: 'absolute',
@@ -19,21 +18,31 @@ const StyledFab = styled(Fab)({
   margin: '0 auto',
 });
 
-export default function BottomAppBar({ toggleGameDrawer }) {
+export default function BottomAppBar({ toggleGameDrawer, cognitoId }) {
+  const [profilePic, setProfilePic] = React.useState(null);
+
+  React.useEffect(() => {
+    Storage.get('profile-picture', { level: 'protected' }).then(res => {
+      console.log(res);
+      setProfilePic(res);
+    });
+  }, []);
   return (
     <React.Fragment>
       <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0 }}>
         <Toolbar>
-          <IconButton color="inherit" aria-label="open drawer">
-            <MenuIcon />
-          </IconButton>
           <StyledFab color="secondary" aria-label="add" onClick={toggleGameDrawer(true)}>
             <CasinoOutlinedIcon />
           </StyledFab>
           <Box sx={{ flexGrow: 1 }} />
-          <IconButton color="inherit">
-            <MoreIcon />
-          </IconButton>
+          <AppBarMenu cognitoId={cognitoId} />
+          <Avatar
+            sx={{ width: '30px', height: '30px', fontSize: '12px'}}
+            alt="Profile Picture"
+            src={profilePic}
+          >
+            LS
+          </Avatar>
         </Toolbar>
       </AppBar>
     </React.Fragment>

@@ -1,28 +1,31 @@
 import * as React from "react";
 import {Autocomplete, Chip, TextField, Divider, Checkbox, Button, FormControlLabel} from "@mui/material";
-// import {createGame, createUser, createUserGames} from '../graphql/mutations';
-// import {getUser, listUsers, listUserGames} from '../graphql/queries';
+// import {createGame, createPlayer} from '../graphql/mutations';
+import {getPlayer, listPlayers} from '../graphql/queries';
 import {API, Auth, graphqlOperation} from "aws-amplify";
 import Box from "@mui/material/Box";
 import TeamForm from "./TeamForm";
 
 export default function GameForm() {
   const [cognitoId, setCognitoId] = React.useState('');
-  const [player1, setPlayer1] = React.useState('');
-  const [player2, setPlayer2] = React.useState('');
-  const [player3, setPlayer3] = React.useState('');
-  const [player4, setPlayer4] = React.useState('');
+  const [player1, setPlayer1] = React.useState({});
+  const [player2, setPlayer2] = React.useState({});
+  const [player3, setPlayer3] = React.useState({});
+  const [player4, setPlayer4] = React.useState({});
+  const [player1Name, setPlayer1Name] = React.useState('');
+  const [player2Name, setPlayer2Name] = React.useState('');
+  const [player3Name, setPlayer3Name] = React.useState('');
+  const [player4Name, setPlayer4Name] = React.useState('');
   const [score1, setScore1] = React.useState('');
   const [score2, setScore2] = React.useState('');
+  const [options, setOptions] = React.useState([]);
 
-  React.useEffect(() => {
-    Auth.currentUserCredentials()
-      .then(res => {
-        setCognitoId(res?.identityId);
-        // API.graphql(graphqlOperation(getUser, {cognitoId: 'us-est-1:e165b07a-5f47-4d2c-98c5-d6ebc78bcb37'}));
-        // API.graphql(graphqlOperation(listUserGames));
-      });
-  }, []);
+  // React.useEffect(() => {
+  //   API.graphql(graphqlOperation(listUsers)).then(res => {
+  //     console.log(res);
+  //     setOptions(res.data.listUsers)
+  //   });
+  // }, []);
 
   const handleSubmit = async (e) => {
     const game = {
@@ -41,7 +44,13 @@ export default function GameForm() {
   return (
     <React.Fragment>
         <form id="game-form" onSubmit={handleSubmit}>
-          <TeamForm number={1} />
+          <TeamForm
+            number={1}
+            setPlayer1={setPlayer1}
+            setPlayer2={setPlayer2}
+            setPlayer1Name={setPlayer1Name}
+            setPlayer2Name={setPlayer2Name}
+          />
           <TeamForm number={2} />
           <Box sx={{m:2}}>
             <Divider sx={{ mb: 1 }}>

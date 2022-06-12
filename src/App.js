@@ -3,8 +3,8 @@ import './App.css';
 import Amplify, {API, Auth, graphqlOperation} from 'aws-amplify';
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-import {getUser} from './graphql/queries';
-import {createGame, createUser} from './graphql/mutations';
+import {getPlayer} from './graphql/queries';
+import {createGame, createPlayer} from './graphql/mutations';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import awsconfig from './aws-exports';
@@ -37,17 +37,34 @@ const App = () => {
     setGameDrawerIsOpen(newOpen);
   };
 
+  const services = {
+    async handleSignUp(formData) {
+      let { username, password, attributes } = formData;
+      // capitalize name
+      attributes.given_name.replace(/^\w/, (c) => c.toUpperCase());
+      attributes.family_name.replace(/^\w/, (c) => c.toUpperCase());
+      return Auth.signUp({
+        username,
+        password,
+        attributes,
+      });
+    },
+  };
+
   React.useEffect(() => {
-    Auth.currentUserCredentials()
+    Auth.currentUserInfo()
       .then(res => {
-        const cognitoId = res.identityId;
+        console.log(res)
+        const cognitoId = res.id;
+        const fullName = res.attributes.given_name + ' ' + res.attributes.family_name;
+        console.log(fullName);
         setCognitoId(cognitoId);
-        API.graphql(graphqlOperation(getUser, {cognitoId: res.identityId})).then(res => {
+        API.graphql(graphqlOperation(getPlayer, {cognitoId: res.id})).then(res => {
           // set state to current dynamoDB user, or create if not already created
-          if (res.data.getUser !== null) {
-            setCurrentUser(res.data.getUser);
+          if (res.data.getPlayer !== null) {
+            setCurrentUser(res.data.getPlayer);
           } else {
-            API.graphql(graphqlOperation(createUser, { input: { cognitoId }}));
+            API.graphql(graphqlOperation(createPlayer, { input: { cognitoId, fullName }}));
           }
         });
       });
@@ -56,7 +73,8 @@ const App = () => {
   return (
     <Authenticator
       loginMechanisms={['phone_number']}
-      signUpAttributes={['phone_number', 'username', 'name', 'email']}
+      signUpAttributes={['given_name', 'family_name']}
+      services={services}
     >
       {({ signOut, user }) => (
         <ThemeProvider theme={theme}>
@@ -75,7 +93,7 @@ const App = () => {
             </Box>
             <GameDisplay />
             <GameDrawer toggleGameDrawer={toggleGameDrawer} gameDrawerIsOpen={gameDrawerIsOpen} />
-            <BottomAppBar toggleGameDrawer={toggleGameDrawer} />
+            <BottomAppBar toggleGameDrawer={toggleGameDrawer} cognitoId={cognitoId} />
           </main>
         </ThemeProvider>
       )}
