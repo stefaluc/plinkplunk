@@ -52,19 +52,19 @@ export default function Game({ currentPlayer, games, setGames, game }) {
       </ListSubheader>
       <ListItem button onClick={handleOpenStats}>
         <Box sx={{ position: 'absolute', left: '40%', top: '25%', display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-          <Box sx={{color: game.score1 > game.score2 ? '#4caf50' : '#ff1744', fontSize: '32px', marginRight: '10px'}}>
+          <Box sx={{color: game.player1Stats.didWin ? '#4caf50' : '#ff1744', fontSize: '32px', marginRight: '10px'}}>
             {game.score1}
           </Box>
           <Avatar sx={{width: '20px', height: '20px', fontSize: '8px', bgcolor: '#263238'}}
                   variant="circle">
             VS
           </Avatar>
-          <Box sx={{color: game.score2 > game.score1 ? '#4caf50' : '#ff1744', fontSize: '32px', marginLeft: '10px'}}>
+          <Box sx={{color: game.player3Stats.didWin ? '#4caf50' : '#ff1744', fontSize: '32px', marginLeft: '10px'}}>
             {game.score2}
           </Box>
         </Box>
         {/* --------PLAYER 1-------- */}
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        <Grid container rowSpacing={3} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           <Grid item xs={6} container direction="row">
             <Avatar
               sx={{ width: '30px', height: '30px', fontSize: '12px'}}
@@ -78,9 +78,15 @@ export default function Game({ currentPlayer, games, setGames, game }) {
                 {game.player1Name}
               </Box>
               {!!game.player1Stats.plunks &&
-              <Box sx={{fontWeight: 'bold', fontSize: '12px', color: '#666'}}>
-                Plunks: {game.player1Stats.plunks}
-              </Box>}
+                <Box sx={{fontWeight: 'bold', fontSize: '12px', color: '#666'}}>
+                  Plunks: {game.player1Stats.plunks}
+                </Box>
+              }
+              {!!game.player1Stats.selfPlunk &&
+                <Box sx={{fontWeight: 'bold', fontSize: '12px', color: '#FF1744'}}>
+                  SELF PLUNK
+                </Box>
+              }
             </Grid>
           </Grid>
           {/* --------PLAYER 3-------- */}
@@ -90,9 +96,14 @@ export default function Game({ currentPlayer, games, setGames, game }) {
                 {game.player3Name}
               </Box>
               {!!game.player3Stats.plunks &&
-              <Box
-                sx={{fontWeight: 'bold', fontSize: '12px', color: '#666', display: 'flex', justifyContent: 'flex-end'}}>
-                Plunks: {game.player3Stats.plunks}
+                <Box
+                  sx={{fontWeight: 'bold', fontSize: '12px', color: '#666', display: 'flex', justifyContent: 'flex-end'}}>
+                  Plunks: {game.player3Stats.plunks}
+                </Box>
+              }
+              {!!game.player3Stats.selfPlunk &&
+              <Box sx={{fontWeight: 'bold', fontSize: '12px', color: '#FF1744'}}>
+                SELF PLUNK
               </Box>
               }
             </Grid>
@@ -122,6 +133,11 @@ export default function Game({ currentPlayer, games, setGames, game }) {
                 Plunks: {game.player2Stats.plunks}
               </Box>
               }
+              {!!game.player2Stats.selfPlunk &&
+              <Box sx={{fontWeight: 'bold', fontSize: '12px', color: '#FF1744'}}>
+                SELF PLUNK
+              </Box>
+              }
             </Grid>
           </Grid>
           {/* --------PLAYER 4-------- */}
@@ -134,6 +150,11 @@ export default function Game({ currentPlayer, games, setGames, game }) {
               <Box
                 sx={{fontWeight: 'bold', fontSize: '12px', color: '#666', display: 'flex', justifyContent: 'flex-end'}}>
                 Plunks: {game.player4Stats.plunks}
+              </Box>
+              }
+              {!!game.player4Stats.selfPlunk &&
+              <Box sx={{fontWeight: 'bold', fontSize: '12px', color: '#FF1744'}}>
+                SELF PLUNK
               </Box>
               }
             </Grid>

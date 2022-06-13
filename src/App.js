@@ -32,6 +32,7 @@ const App = ({ signOut }) => {
   const [sideDrawerIsOpen, setSideDrawerIsOpen] = React.useState(false);
   const [profilePic, setProfilePic] = React.useState(null);
   const [games, setGames] = React.useState([]);
+  const [gamesAreLoading, setGamesAreLoading] = React.useState(false);
   const [players, setPlayers] = React.useState([]);
 
   const toggleGameDrawer = (newOpen) => () => {
@@ -75,10 +76,12 @@ const App = ({ signOut }) => {
   }, []);
 
   React.useEffect(() => {
+    setGamesAreLoading(true);
     API.graphql(graphqlOperation(listGames)).then(res => {
       console.log("listGames: ");
       console.log(res);
       setGames(res.data.listGames.items);
+      setGamesAreLoading(false);
     });
   }, []);
 
@@ -96,6 +99,7 @@ const App = ({ signOut }) => {
         <GamesDisplay
           currentPlayer={currentPlayer}
           games={games}
+          gamesAreLoading={gamesAreLoading}
           setGames={setGames}
         />
         <GameDrawer

@@ -1,18 +1,13 @@
 import Box from "@mui/material/Box";
 import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
   Autocomplete,
   Checkbox,
   Divider,
   FormControlLabel,
   TextField
 } from "@mui/material";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import * as React from "react";
-import Typography from "@mui/material/Typography";
-
+import OptionalStats from "./OptionalStats";
 
 export default function TeamForm(props) {
   return (
@@ -78,20 +73,10 @@ export default function TeamForm(props) {
         }
       </Box>
 
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography>Optional {props.number === 1 ? 'Player 1' : 'Player 3'} Statistics</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            WIP
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
+      <OptionalStats
+        playerNumber={props.number === 1 ? 'player1' : 'player3'}
+        setPoints={props.setPoints}
+      />
 
       <Divider sx={{mb: 4, mt: 4}} />
 
@@ -159,20 +144,12 @@ export default function TeamForm(props) {
         }
       </Box>
 
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography>Optional {props.number === 1 ? 'Player 2' : 'Player 4'} Statistics</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            WIP
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
+      <OptionalStats
+        playerNumber={props.number === 1 ? 'Player 2' : 'Player 4'}
+        setPlinks={props.number === 1 ? props.setPlayer2Plinks : props.setPlayer4Plinks}
+        setDrinks={props.number === 1 ? props.setPlayer2Drinks : props.setPlayer4Plinks}
+        setPoints={props.number === 1 ? props.setPlayer2Points : props.setPlayer4Plinks}
+      />
 
     </Box>
   );

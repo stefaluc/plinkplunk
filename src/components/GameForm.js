@@ -19,11 +19,36 @@ import {API, graphqlOperation} from "aws-amplify";
 import Box from "@mui/material/Box";
 import TeamForm from "./TeamForm";
 
+const team = {
+  player1: {
+    name: '',
+    plunks: 0,
+    plunksChecked: false,
+    plinks: 0,
+    drinks: 0,
+    points: 0,
+  },
+  player2: {
+    name: '',
+    plunks: 0,
+    plunksChecked: false,
+    selfPlunk: false,
+    plinks: 0,
+    drinks: 0,
+    points: 0,
+  }
+}
+
 export default function GameForm({ currentPlayer, players, toggleGameDrawer, setGames, games, setGameDrawerIsOpen }) {
+  const [team1, setTeam1] = React.useState(team);
   const [player1Name, setPlayer1Name] = React.useState('');
   const [player2Name, setPlayer2Name] = React.useState('');
   const [player3Name, setPlayer3Name] = React.useState('');
   const [player4Name, setPlayer4Name] = React.useState('');
+  const [plunk1Checked, setPlunk1Checked] = React.useState(false);
+  const [plunk2Checked, setPlunk2Checked] = React.useState(false);
+  const [plunk3Checked, setPlunk3Checked] = React.useState(false);
+  const [plunk4Checked, setPlunk4Checked] = React.useState(false);
   const [player1Plunks, setPlayer1Plunks] = React.useState(0);
   const [player2Plunks, setPlayer2Plunks] = React.useState(0);
   const [player3Plunks, setPlayer3Plunks] = React.useState(0);
@@ -32,16 +57,31 @@ export default function GameForm({ currentPlayer, players, toggleGameDrawer, set
   const [player2SelfPlunk, setPlayer2SelfPlunk] = React.useState(false);
   const [player3SelfPlunk, setPlayer3SelfPlunk] = React.useState(false);
   const [player4SelfPlunk, setPlayer4SelfPlunk] = React.useState(false);
-  const [plunk1Checked, setPlunk1Checked] = React.useState(false);
-  const [plunk2Checked, setPlunk2Checked] = React.useState(false);
-  const [plunk3Checked, setPlunk3Checked] = React.useState(false);
-  const [plunk4Checked, setPlunk4Checked] = React.useState(false);
+  const [player1Plinks, setPlayer1Plinks] = React.useState(0);
+  const [player2Plinks, setPlayer2Plinks] = React.useState(0);
+  const [player3Plinks, setPlayer3Plinks] = React.useState(0);
+  const [player4Plinks, setPlayer4Plinks] = React.useState(0);
+  const [player1Drinks, setPlayer1Drinks] = React.useState(0);
+  const [player2Drinks, setPlayer2Drinks] = React.useState(0);
+  const [player3Drinks, setPlayer3Drinks] = React.useState(0);
+  const [player4Drinks, setPlayer4Drinks] = React.useState(0);
+
   const [score1, setScore1] = React.useState('');
   const [score2, setScore2] = React.useState('');
+
   const [activeStep, setActiveStep] = React.useState(0);
   const [isSubmittingForm, setIsSubmittingForm] = React.useState(false);
   const [openError, setOpenError] = React.useState(false);
   const [errorMsg, setErrorMsg] = React.useState('');
+
+  const resetState = () => {
+    setPlayer1Name(''); setPlayer2Name(''); setPlayer3Name(''); setPlayer4Name('');
+    setPlunk1Checked(false); setPlunk2Checked(false); setPlunk3Checked(false); setPlunk4Checked(false);
+    setPlayer1Plunks(0); setPlayer2Plunks(0); setPlayer3Plunks(0); setPlayer4Plunks(0);
+    setPlayer1SelfPlunk(false); setPlayer2SelfPlunk(false); setPlayer3SelfPlunk(false); setPlayer4SelfPlunk(false);
+    setScore1(''); setScore2('');
+    setActiveStep(0);
+  }
 
   const handleCloseError = () => {
     setOpenError(false);
@@ -81,11 +121,12 @@ export default function GameForm({ currentPlayer, players, toggleGameDrawer, set
       console.log('Create Game:');
       console.log(resGame);
       const statsGameId = resGame.data.createGame.id;
-      const team1DidWin = score1 > score2;
+      const team1DidWin = (score1 > score2 && !player1SelfPlunk && !player2SelfPlunk) || player3SelfPlunk || player4SelfPlunk;
+      const team2DidWin = (score2 > score1 && !player3SelfPlunk && !player4SelfPlunk) || player1SelfPlunk || player2SelfPlunk;
       const statsPlayer1 = { plunks: player1Plunks, selfPlunk: player1SelfPlunk, playerStatsId: (!!player1) ? player1.cognitoId : null, didWin: team1DidWin };
       const statsPlayer2 = { plunks: player2Plunks, selfPlunk: player2SelfPlunk, playerStatsId: (!!player2) ? player2.cognitoId : null, didWin: team1DidWin };
-      const statsPlayer3 = { plunks: player3Plunks, selfPlunk: player3SelfPlunk, playerStatsId: (!!player3) ? player3.cognitoId : null, didWin: !team1DidWin };
-      const statsPlayer4 = { plunks: player4Plunks, selfPlunk: player4SelfPlunk, playerStatsId: (!!player4) ? player4.cognitoId : null, didWin: !team1DidWin };
+      const statsPlayer3 = { plunks: player3Plunks, selfPlunk: player3SelfPlunk, playerStatsId: (!!player3) ? player3.cognitoId : null, didWin: team2DidWin };
+      const statsPlayer4 = { plunks: player4Plunks, selfPlunk: player4SelfPlunk, playerStatsId: (!!player4) ? player4.cognitoId : null, didWin: team2DidWin };
       const createStats1 = API.graphql(graphqlOperation(createStats, { input: { ...statsPlayer1 }}));
       const createStats2 = API.graphql(graphqlOperation(createStats, { input: { ...statsPlayer2 }}));
       const createStats3 = API.graphql(graphqlOperation(createStats, { input: { ...statsPlayer3 }}));
@@ -109,6 +150,7 @@ export default function GameForm({ currentPlayer, players, toggleGameDrawer, set
             toggleGameDrawer(false);
             setGameDrawerIsOpen(false);
             setGames([resUpdateGame.data.updateGame, ...games]);
+            resetState();
           }).catch(error => {
             console.log(error);
             setIsSubmittingForm(false);
