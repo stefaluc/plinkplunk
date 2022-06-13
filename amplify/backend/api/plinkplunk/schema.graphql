@@ -16,26 +16,26 @@ type Game @model {
   player2: Player @hasOne
   player3: Player @hasOne
   player4: Player @hasOne
-  creator: Player @hasOne
-  playerName1: String!
-  playerName2: String!
-  playerName3: String!
-  playerName4: String!
+  creator: Player! @hasOne
+  player1Name: String!
+  player2Name: String!
+  player3Name: String!
+  player4Name: String!
   score1: Int!
   score2: Int!
-  player1Stats: Stats! @hasOne
-  player2Stats: Stats! @hasOne
-  player3Stats: Stats! @hasOne
-  player4Stats: Stats! @hasOne
+  player1Stats: Stats @hasOne
+  player2Stats: Stats @hasOne
+  player3Stats: Stats @hasOne
+  player4Stats: Stats @hasOne
   notes: String
 }
 
 type Stats @model {
   id: ID!
-  game: Game! @belongsTo
-  player: Player! @belongsTo
+  game: Game
+  player: Player
   plunks: Int! @default(value: "0")
-  selfPlunks: Int! @default(value: "0")
+  selfPlunk: Boolean!
   didWin: Boolean!
   plinks: Int @default(value: "0")
   drinks: Int @default(value: "0")

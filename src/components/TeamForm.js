@@ -13,22 +13,29 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import * as React from "react";
 import Typography from "@mui/material/Typography";
 
-const options = ['Lucas Stefanski', 'Walter Schemel', 'Justin Gabriel', 'Alec Huggins', 'Brett Wilson'];
 
 export default function TeamForm(props) {
-  const [plunk1Checked, setPlunk1Checked] = React.useState(false);
-  const [plunk2Checked, setPlunk2Checked] = React.useState(false);
-
   return (
-    <Box sx={{ m: 2, mt: 4, mb: 0 }}>
-      <Divider sx={{ mb: 1 }}>
-        TEAM {props.number}
-      </Divider>
+    <Box>
       <Autocomplete
-        disablePortal
-        options={options}
+        options={props.options}
         size="small"
-        renderInput={(params) => <TextField {...params} label="Player 1" />}
+        onChange={(e, v) => {
+          props.number === 1 ? props.setPlayer1Name(v) : props.setPlayer3Name(v)
+        }}
+        value={props.number === 1 ?
+          (props.player1Name === '' ? null : props.player1Name) :
+          (props.player3Name === '' ? null : props.player3Name)
+        }
+        clearOnBlur={false}
+        renderInput={(params) =>
+          <TextField
+            {...params}
+            onChange={(e) => {
+              props.number === 1 ? props.setPlayer1Name(e.target.value) : props.setPlayer3Name(e.target.value)
+            }}
+            label={props.number === 1 ? "Player 1" : "Player 3"}
+          />}
         color="secondary"
       />
       <Box sx={{ mt: 1, mb: 1 }}>
@@ -36,12 +43,13 @@ export default function TeamForm(props) {
           control={
             <Checkbox
               size="medium"
-              checked={plunk1Checked}
-              onChange={(e) => {setPlunk1Checked(e.target.checked)}}
+              checked={props.number === 1 ? props.plunk1Checked : props.plunk3Checked}
+              onChange={(e) => {props.number === 1 ? props.setPlunk1Checked(e.target.checked) : props.setPlunk3Checked(e.target.checked)}}
               color="secondary"
             />}
           label="Plunks?" />
-        {plunk1Checked &&
+        {(props.number === 1 ? props.plunk1Checked : props.plunk3Checked) &&
+        <>
           <TextField
             label="#"
             type="number"
@@ -49,52 +57,123 @@ export default function TeamForm(props) {
             size="small"
             sx={{width: '50px'}}
             color="secondary"
+            value={props.number === 1 ? props.player1Plunks : props.player3Plunks}
+            onChange={(e) => {
+              props.number === 1 ? props.setPlayer1Plunks(e.target.value) : props.setPlayer3Plunks(e.target.value)
+            }}
           />
+          <FormControlLabel
+            control={
+              <Checkbox
+                sx={{ml:3}}
+                size="medium"
+                checked={props.number === 1 ? props.player1SelfPlunk : props.player3SelfPlunk}
+                onChange={(e) => {
+                  props.number === 1 ? props.setPlayer1SelfPlunk(e.target.checked) : props.setPlayer3SelfPlunk(e.target.checked)
+                }}
+                color="secondary"
+              />}
+            label="Self Plunk?!" />
+        </>
         }
       </Box>
-      <Autocomplete
-        disablePortal
-        options={options}
-        size="small"
-        renderInput={(params) => <TextField {...params} label="Player 2" />}
-        color="secondary"
-      />
-      <Box sx={{ mt: 1, mb: 1 }}>
-        <FormControlLabel
-          control={
-            <Checkbox
-              size="medium"
-              checked={plunk2Checked}
-              onChange={(e) => {setPlunk2Checked(e.target.checked)}}
-              color="secondary"
-            />}
-          label="Plunks?" />
-        {plunk2Checked &&
-          <TextField
-            label="#"
-            type="number"
-            id="outlined-size-small"
-            size="small"
-            sx={{width: '50px'}}
-            color="secondary"
-          />
-        }
-      </Box>
+
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Optional Statistics</Typography>
+          <Typography>Optional {props.number === 1 ? 'Player 1' : 'Player 3'} Statistics</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            WIP
           </Typography>
         </AccordionDetails>
       </Accordion>
+
+      <Divider sx={{mb: 4, mt: 4}} />
+
+      {/* --------------PLAYER 2/4-------------- */}
+
+      <Autocomplete
+        disablePortal
+        options={props.options}
+        size="small"
+        value={props.number === 1 ?
+          (props.player2Name === '' ? null : props.player2Name) :
+          (props.player4Name === '' ? null : props.player4Name)
+        }
+        onChange={(e, v) => {
+          props.number === 1 ? props.setPlayer2Name(v) : props.setPlayer4Name(v)
+        }}
+        renderInput={(params) =>
+          <TextField
+            {...params}
+            onChange={(e) => {
+              props.number === 1 ? props.setPlayer2Name(e.target.value) : props.setPlayer4Name(e.target.value)
+            }}
+            label={props.number === 1 ? "Player 2" : "Player 4"}
+          />
+        }
+        color="secondary"
+      />
+      <Box sx={{ mt: 1, mb: 1 }}>
+        <FormControlLabel
+          control={
+            <Checkbox
+              size="medium"
+              checked={props.number === 1 ? props.plunk2Checked : props.plunk4Checked}
+              onChange={(e) => {props.number === 1 ? props.setPlunk2Checked(e.target.checked) : props.setPlunk4Checked(e.target.checked)}}
+              color="secondary"
+            />}
+          label="Plunks?" />
+        {(props.number === 1 ? props.plunk2Checked : props.plunk4Checked) &&
+        <>
+          <TextField
+            label="#"
+            type="number"
+            id="outlined-size-small"
+            size="small"
+            sx={{width: '50px'}}
+            color="secondary"
+            value={props.number === 1 ? props.player2Plunks : props.player4Plunks}
+            onChange={(e) => {
+              props.number === 1 ? props.setPlayer2Plunks(e.target.value) : props.setPlayer4Plunks(e.target.value)
+            }}
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                sx={{ml:3}}
+                size="medium"
+                checked={props.number === 1 ? props.player2SelfPlunk : props.player4SelfPlunk}
+                onChange={(e) => {
+                  props.number === 1 ? props.setPlayer2SelfPlunk(e.target.checked) : props.setPlayer4SelfPlunk(e.target.checked)
+                }}
+                color="secondary"
+              />}
+            label="Self Plunk?!" />
+        </>
+        }
+      </Box>
+
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>Optional {props.number === 1 ? 'Player 2' : 'Player 4'} Statistics</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            WIP
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+
     </Box>
   );
 }

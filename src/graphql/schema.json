@@ -535,14 +535,18 @@
           "description" : null,
           "args" : [ ],
           "type" : {
-            "kind" : "OBJECT",
-            "name" : "Player",
-            "ofType" : null
+            "kind" : "NON_NULL",
+            "name" : null,
+            "ofType" : {
+              "kind" : "OBJECT",
+              "name" : "Player",
+              "ofType" : null
+            }
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "playerName1",
+          "name" : "player1Name",
           "description" : null,
           "args" : [ ],
           "type" : {
@@ -557,7 +561,7 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "playerName2",
+          "name" : "player2Name",
           "description" : null,
           "args" : [ ],
           "type" : {
@@ -572,7 +576,7 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "playerName3",
+          "name" : "player3Name",
           "description" : null,
           "args" : [ ],
           "type" : {
@@ -587,7 +591,7 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "playerName4",
+          "name" : "player4Name",
           "description" : null,
           "args" : [ ],
           "type" : {
@@ -636,13 +640,9 @@
           "description" : null,
           "args" : [ ],
           "type" : {
-            "kind" : "NON_NULL",
-            "name" : null,
-            "ofType" : {
-              "kind" : "OBJECT",
-              "name" : "Stats",
-              "ofType" : null
-            }
+            "kind" : "OBJECT",
+            "name" : "Stats",
+            "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
@@ -651,13 +651,9 @@
           "description" : null,
           "args" : [ ],
           "type" : {
-            "kind" : "NON_NULL",
-            "name" : null,
-            "ofType" : {
-              "kind" : "OBJECT",
-              "name" : "Stats",
-              "ofType" : null
-            }
+            "kind" : "OBJECT",
+            "name" : "Stats",
+            "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
@@ -666,13 +662,9 @@
           "description" : null,
           "args" : [ ],
           "type" : {
-            "kind" : "NON_NULL",
-            "name" : null,
-            "ofType" : {
-              "kind" : "OBJECT",
-              "name" : "Stats",
-              "ofType" : null
-            }
+            "kind" : "OBJECT",
+            "name" : "Stats",
+            "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
@@ -681,13 +673,9 @@
           "description" : null,
           "args" : [ ],
           "type" : {
-            "kind" : "NON_NULL",
-            "name" : null,
-            "ofType" : {
-              "kind" : "OBJECT",
-              "name" : "Stats",
-              "ofType" : null
-            }
+            "kind" : "OBJECT",
+            "name" : "Stats",
+            "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
@@ -792,9 +780,13 @@
           "description" : null,
           "args" : [ ],
           "type" : {
-            "kind" : "SCALAR",
-            "name" : "ID",
-            "ofType" : null
+            "kind" : "NON_NULL",
+            "name" : null,
+            "ofType" : {
+              "kind" : "SCALAR",
+              "name" : "ID",
+              "ofType" : null
+            }
           },
           "isDeprecated" : false,
           "deprecationReason" : null
@@ -803,13 +795,9 @@
           "description" : null,
           "args" : [ ],
           "type" : {
-            "kind" : "NON_NULL",
-            "name" : null,
-            "ofType" : {
-              "kind" : "SCALAR",
-              "name" : "ID",
-              "ofType" : null
-            }
+            "kind" : "SCALAR",
+            "name" : "ID",
+            "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
@@ -818,13 +806,9 @@
           "description" : null,
           "args" : [ ],
           "type" : {
-            "kind" : "NON_NULL",
-            "name" : null,
-            "ofType" : {
-              "kind" : "SCALAR",
-              "name" : "ID",
-              "ofType" : null
-            }
+            "kind" : "SCALAR",
+            "name" : "ID",
+            "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
@@ -833,13 +817,9 @@
           "description" : null,
           "args" : [ ],
           "type" : {
-            "kind" : "NON_NULL",
-            "name" : null,
-            "ofType" : {
-              "kind" : "SCALAR",
-              "name" : "ID",
-              "ofType" : null
-            }
+            "kind" : "SCALAR",
+            "name" : "ID",
+            "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
@@ -848,13 +828,9 @@
           "description" : null,
           "args" : [ ],
           "type" : {
-            "kind" : "NON_NULL",
-            "name" : null,
-            "ofType" : {
-              "kind" : "SCALAR",
-              "name" : "ID",
-              "ofType" : null
-            }
+            "kind" : "SCALAR",
+            "name" : "ID",
+            "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
@@ -896,13 +872,9 @@
           "description" : null,
           "args" : [ ],
           "type" : {
-            "kind" : "NON_NULL",
-            "name" : null,
-            "ofType" : {
-              "kind" : "OBJECT",
-              "name" : "Game",
-              "ofType" : null
-            }
+            "kind" : "OBJECT",
+            "name" : "Game",
+            "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
@@ -911,13 +883,9 @@
           "description" : null,
           "args" : [ ],
           "type" : {
-            "kind" : "NON_NULL",
-            "name" : null,
-            "ofType" : {
-              "kind" : "OBJECT",
-              "name" : "Player",
-              "ofType" : null
-            }
+            "kind" : "OBJECT",
+            "name" : "Player",
+            "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
@@ -937,7 +905,7 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "selfPlunks",
+          "name" : "selfPlunk",
           "description" : null,
           "args" : [ ],
           "type" : {
@@ -945,7 +913,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "SCALAR",
-              "name" : "Int",
+              "name" : "Boolean",
               "ofType" : null
             }
           },
@@ -1030,21 +998,6 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "statsGameId",
-          "description" : null,
-          "args" : [ ],
-          "type" : {
-            "kind" : "NON_NULL",
-            "name" : null,
-            "ofType" : {
-              "kind" : "SCALAR",
-              "name" : "ID",
-              "ofType" : null
-            }
-          },
-          "isDeprecated" : false,
-          "deprecationReason" : null
-        }, {
           "name" : "playerStatsId",
           "description" : null,
           "args" : [ ],
@@ -1084,7 +1037,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "playerName1",
+          "name" : "player1Name",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -1093,7 +1046,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "playerName2",
+          "name" : "player2Name",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -1102,7 +1055,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "playerName3",
+          "name" : "player3Name",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -1111,7 +1064,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "playerName4",
+          "name" : "player4Name",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -1846,11 +1799,11 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "selfPlunks",
+          "name" : "selfPlunk",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
-            "name" : "ModelIntInput",
+            "name" : "ModelBooleanInput",
             "ofType" : null
           },
           "defaultValue" : null
@@ -1922,15 +1875,6 @@
           "type" : {
             "kind" : "INPUT_OBJECT",
             "name" : "ModelStatsFilterInput",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        }, {
-          "name" : "statsGameId",
-          "description" : null,
-          "type" : {
-            "kind" : "INPUT_OBJECT",
-            "name" : "ModelIDInput",
             "ofType" : null
           },
           "defaultValue" : null
@@ -2595,7 +2539,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "playerName1",
+          "name" : "player1Name",
           "description" : null,
           "type" : {
             "kind" : "NON_NULL",
@@ -2608,7 +2552,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "playerName2",
+          "name" : "player2Name",
           "description" : null,
           "type" : {
             "kind" : "NON_NULL",
@@ -2621,7 +2565,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "playerName3",
+          "name" : "player3Name",
           "description" : null,
           "type" : {
             "kind" : "NON_NULL",
@@ -2634,7 +2578,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "playerName4",
+          "name" : "player4Name",
           "description" : null,
           "type" : {
             "kind" : "NON_NULL",
@@ -2730,61 +2674,49 @@
           "name" : "gameCreatorId",
           "description" : null,
           "type" : {
-            "kind" : "SCALAR",
-            "name" : "ID",
-            "ofType" : null
+            "kind" : "NON_NULL",
+            "name" : null,
+            "ofType" : {
+              "kind" : "SCALAR",
+              "name" : "ID",
+              "ofType" : null
+            }
           },
           "defaultValue" : null
         }, {
           "name" : "gamePlayer1StatsId",
           "description" : null,
           "type" : {
-            "kind" : "NON_NULL",
-            "name" : null,
-            "ofType" : {
-              "kind" : "SCALAR",
-              "name" : "ID",
-              "ofType" : null
-            }
+            "kind" : "SCALAR",
+            "name" : "ID",
+            "ofType" : null
           },
           "defaultValue" : null
         }, {
           "name" : "gamePlayer2StatsId",
           "description" : null,
           "type" : {
-            "kind" : "NON_NULL",
-            "name" : null,
-            "ofType" : {
-              "kind" : "SCALAR",
-              "name" : "ID",
-              "ofType" : null
-            }
+            "kind" : "SCALAR",
+            "name" : "ID",
+            "ofType" : null
           },
           "defaultValue" : null
         }, {
           "name" : "gamePlayer3StatsId",
           "description" : null,
           "type" : {
-            "kind" : "NON_NULL",
-            "name" : null,
-            "ofType" : {
-              "kind" : "SCALAR",
-              "name" : "ID",
-              "ofType" : null
-            }
+            "kind" : "SCALAR",
+            "name" : "ID",
+            "ofType" : null
           },
           "defaultValue" : null
         }, {
           "name" : "gamePlayer4StatsId",
           "description" : null,
           "type" : {
-            "kind" : "NON_NULL",
-            "name" : null,
-            "ofType" : {
-              "kind" : "SCALAR",
-              "name" : "ID",
-              "ofType" : null
-            }
+            "kind" : "SCALAR",
+            "name" : "ID",
+            "ofType" : null
           },
           "defaultValue" : null
         } ],
@@ -2797,7 +2729,7 @@
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
-          "name" : "playerName1",
+          "name" : "player1Name",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -2806,7 +2738,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "playerName2",
+          "name" : "player2Name",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -2815,7 +2747,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "playerName3",
+          "name" : "player3Name",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -2824,7 +2756,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "playerName4",
+          "name" : "player4Name",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -3007,7 +2939,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "playerName1",
+          "name" : "player1Name",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
@@ -3016,7 +2948,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "playerName2",
+          "name" : "player2Name",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
@@ -3025,7 +2957,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "playerName3",
+          "name" : "player3Name",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
@@ -3034,7 +2966,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "playerName4",
+          "name" : "player4Name",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
@@ -3213,14 +3145,14 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "selfPlunks",
+          "name" : "selfPlunk",
           "description" : null,
           "type" : {
             "kind" : "NON_NULL",
             "name" : null,
             "ofType" : {
               "kind" : "SCALAR",
-              "name" : "Int",
+              "name" : "Boolean",
               "ofType" : null
             }
           },
@@ -3266,19 +3198,6 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "statsGameId",
-          "description" : null,
-          "type" : {
-            "kind" : "NON_NULL",
-            "name" : null,
-            "ofType" : {
-              "kind" : "SCALAR",
-              "name" : "ID",
-              "ofType" : null
-            }
-          },
-          "defaultValue" : null
-        }, {
           "name" : "playerStatsId",
           "description" : null,
           "type" : {
@@ -3306,11 +3225,11 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "selfPlunks",
+          "name" : "selfPlunk",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
-            "name" : "ModelIntInput",
+            "name" : "ModelBooleanInput",
             "ofType" : null
           },
           "defaultValue" : null
@@ -3386,15 +3305,6 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "statsGameId",
-          "description" : null,
-          "type" : {
-            "kind" : "INPUT_OBJECT",
-            "name" : "ModelIDInput",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        }, {
           "name" : "playerStatsId",
           "description" : null,
           "type" : {
@@ -3435,11 +3345,11 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "selfPlunks",
+          "name" : "selfPlunk",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
-            "name" : "Int",
+            "name" : "Boolean",
             "ofType" : null
           },
           "defaultValue" : null
@@ -3476,15 +3386,6 @@
           "type" : {
             "kind" : "SCALAR",
             "name" : "Int",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        }, {
-          "name" : "statsGameId",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "ID",
             "ofType" : null
           },
           "defaultValue" : null
@@ -4518,23 +4419,6 @@
         "onFragment" : false,
         "onField" : true
       }, {
-        "name" : "deprecated",
-        "description" : null,
-        "locations" : [ "FIELD_DEFINITION", "ENUM_VALUE" ],
-        "args" : [ {
-          "name" : "reason",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "String",
-            "ofType" : null
-          },
-          "defaultValue" : "\"No longer supported\""
-        } ],
-        "onOperation" : false,
-        "onFragment" : false,
-        "onField" : false
-      }, {
         "name" : "aws_subscribe",
         "description" : "Tells the service which mutation triggers this subscription.",
         "locations" : [ "FIELD_DEFINITION" ],
@@ -4646,6 +4530,23 @@
             }
           },
           "defaultValue" : null
+        } ],
+        "onOperation" : false,
+        "onFragment" : false,
+        "onField" : false
+      }, {
+        "name" : "deprecated",
+        "description" : null,
+        "locations" : [ "FIELD_DEFINITION", "ENUM_VALUE" ],
+        "args" : [ {
+          "name" : "reason",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "String",
+            "ofType" : null
+          },
+          "defaultValue" : "\"No longer supported\""
         } ],
         "onOperation" : false,
         "onFragment" : false,

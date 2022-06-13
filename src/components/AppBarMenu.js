@@ -4,14 +4,13 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import {Backdrop, CircularProgress, ListItemIcon, ListItemText} from "@mui/material";
-import {PhotoCamera} from "@mui/icons-material";
+import {Logout, PhotoCamera} from "@mui/icons-material";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import {updatePlayer} from "../graphql/mutations";
-import {getPlayer} from "../graphql/queries";
 
-export default function AppBarMenu({ cognitoId }) {
+export default function AppBarMenu({ cognitoId, signOut }) {
   const [imageFile, setImageFile] = React.useState(null);
   const [isUploading, setIsUploading] = React.useState(null);
   const [progressLoaded, setProgressLoaded] = React.useState(0);
@@ -95,6 +94,12 @@ export default function AppBarMenu({ cognitoId }) {
             </ListItemIcon>
             <ListItemText>Add Profile Picture</ListItemText>
           </label>
+        </MenuItem>
+        <MenuItem onClick={signOut}>
+          <ListItemIcon aria-label="logout" >
+            <Logout fontSize="small" />
+          </ListItemIcon>
+          <ListItemText>Sign Out</ListItemText>
         </MenuItem>
       </Menu>
 

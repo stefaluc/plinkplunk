@@ -1,19 +1,16 @@
 import React from 'react';
 import './App.css';
-import Amplify, {API, Auth, graphqlOperation} from 'aws-amplify';
-import { Authenticator } from '@aws-amplify/ui-react';
+import Amplify, {API, Auth, graphqlOperation, Storage} from 'aws-amplify';
 import '@aws-amplify/ui-react/styles.css';
-import {getPlayer} from './graphql/queries';
-import {createGame, createPlayer} from './graphql/mutations';
+import {getPlayer, listGames, listPlayers} from './graphql/queries';
+import {createPlayer} from './graphql/mutations';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import awsconfig from './aws-exports';
 import BottomAppBar from "./components/BottomAppBar";
-import GameDisplay from "./components/GameDisplay";
-import { Global } from '@emotion/react';
+import GamesDisplay from "./components/GamesDisplay";
 import GameDrawer from "./components/GameDrawer";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import SideDrawer from "./components/SideDrawer";
 
 Amplify.configure(awsconfig);
 
@@ -28,76 +25,101 @@ const theme = createTheme({
   },
 });
 
-const App = () => {
+const App = ({ signOut }) => {
   const [cognitoId, setCognitoId] = React.useState('');
-  const [currentUser, setCurrentUser] = React.useState({});
+  const [currentPlayer, setCurrentPlayer] = React.useState({});
   const [gameDrawerIsOpen, setGameDrawerIsOpen] = React.useState(false);
+  const [sideDrawerIsOpen, setSideDrawerIsOpen] = React.useState(false);
+  const [profilePic, setProfilePic] = React.useState(null);
+  const [games, setGames] = React.useState([]);
+  const [players, setPlayers] = React.useState([]);
 
   const toggleGameDrawer = (newOpen) => () => {
     setGameDrawerIsOpen(newOpen);
   };
 
-  const services = {
-    async handleSignUp(formData) {
-      let { username, password, attributes } = formData;
-      // capitalize name
-      attributes.given_name.replace(/^\w/, (c) => c.toUpperCase());
-      attributes.family_name.replace(/^\w/, (c) => c.toUpperCase());
-      return Auth.signUp({
-        username,
-        password,
-        attributes,
-      });
-    },
+  const toggleSideDrawer = (newOpen) => () => {
+    setSideDrawerIsOpen(newOpen);
   };
 
   React.useEffect(() => {
     Auth.currentUserInfo()
       .then(res => {
-        console.log(res)
+        console.log("Auth.currentUserInfo: ");
+        console.log(res);
         const cognitoId = res.id;
         const fullName = res.attributes.given_name + ' ' + res.attributes.family_name;
         console.log(fullName);
         setCognitoId(cognitoId);
         API.graphql(graphqlOperation(getPlayer, {cognitoId: res.id})).then(res => {
+          console.log("getPlayer: ");
+          console.log(res);
           // set state to current dynamoDB user, or create if not already created
           if (res.data.getPlayer !== null) {
-            setCurrentUser(res.data.getPlayer);
+            setCurrentPlayer(res.data.getPlayer);
+            if (res.data.getPlayer.hasProfilePicture) {
+              Storage.get('profile-picture', {level: 'protected'}).then(res => {
+                console.log(res);
+                setProfilePic(res);
+              });
+            }
           } else {
-            API.graphql(graphqlOperation(createPlayer, { input: { cognitoId, fullName }}));
+            API.graphql(graphqlOperation(createPlayer, { input: { cognitoId, fullName, hasProfilePicture: false }}))
+              .then(res => {
+                console.log("createPlayer: ");
+                console.log(res);
+              });
           }
         });
       });
   }, []);
 
+  React.useEffect(() => {
+    API.graphql(graphqlOperation(listGames)).then(res => {
+      console.log("listGames: ");
+      console.log(res);
+      setGames(res.data.listGames.items);
+    });
+  }, []);
+
+  React.useEffect(() => {
+    API.graphql(graphqlOperation(listPlayers)).then(res => {
+      console.log("listPlayers: ");
+      console.log(res);
+      setPlayers(res.data.listPlayers.items);
+    });
+  }, []);
+
   return (
-    <Authenticator
-      loginMechanisms={['phone_number']}
-      signUpAttributes={['given_name', 'family_name']}
-      services={services}
-    >
-      {({ signOut, user }) => (
-        <ThemeProvider theme={theme}>
-          <main style={{ height: '100%' }}>
-            <Global
-              styles={{
-                '.MuiDrawer-root > .MuiPaper-root': {
-                  height: '85%',
-                  overflow: 'visible',
-                },
-              }}
-            />
-            <Box sx={{ m: 2 }}>
-              <Typography variant="h3">Hello LubeMaster</Typography>
-              <button onClick={signOut}>Sign out</button>
-            </Box>
-            <GameDisplay />
-            <GameDrawer toggleGameDrawer={toggleGameDrawer} gameDrawerIsOpen={gameDrawerIsOpen} />
-            <BottomAppBar toggleGameDrawer={toggleGameDrawer} cognitoId={cognitoId} />
-          </main>
-        </ThemeProvider>
-      )}
-    </Authenticator>
+    <ThemeProvider theme={theme}>
+      <main style={{ height: '100%' }}>
+        <GamesDisplay
+          currentPlayer={currentPlayer}
+          games={games}
+          setGames={setGames}
+        />
+        <GameDrawer
+          currentPlayer={currentPlayer}
+          players={players}
+          toggleGameDrawer={toggleGameDrawer}
+          gameDrawerIsOpen={gameDrawerIsOpen}
+          games={games}
+          setGames={setGames}
+          setGameDrawerIsOpen={setGameDrawerIsOpen}
+        />
+        <SideDrawer
+          sideDrawerIsOpen={sideDrawerIsOpen}
+          toggleSideDrawer={toggleSideDrawer}
+        />
+        <BottomAppBar
+          toggleSideDrawer={toggleSideDrawer}
+          toggleGameDrawer={toggleGameDrawer}
+          cognitoId={cognitoId}
+          profilePic={profilePic}
+          signOut={signOut}
+        />
+      </main>
+    </ThemeProvider>
   );
 };
 

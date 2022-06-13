@@ -10,10 +10,10 @@ export const onCreatePlayer = /* GraphQL */ `
       games {
         items {
           id
-          playerName1
-          playerName2
-          playerName3
-          playerName4
+          player1Name
+          player2Name
+          player3Name
+          player4Name
           score1
           score2
           notes
@@ -36,14 +36,13 @@ export const onCreatePlayer = /* GraphQL */ `
         items {
           id
           plunks
-          selfPlunks
+          selfPlunk
           didWin
           plinks
           drinks
           points
           createdAt
           updatedAt
-          statsGameId
           playerStatsId
         }
         nextToken
@@ -62,10 +61,10 @@ export const onUpdatePlayer = /* GraphQL */ `
       games {
         items {
           id
-          playerName1
-          playerName2
-          playerName3
-          playerName4
+          player1Name
+          player2Name
+          player3Name
+          player4Name
           score1
           score2
           notes
@@ -88,14 +87,13 @@ export const onUpdatePlayer = /* GraphQL */ `
         items {
           id
           plunks
-          selfPlunks
+          selfPlunk
           didWin
           plinks
           drinks
           points
           createdAt
           updatedAt
-          statsGameId
           playerStatsId
         }
         nextToken
@@ -114,10 +112,10 @@ export const onDeletePlayer = /* GraphQL */ `
       games {
         items {
           id
-          playerName1
-          playerName2
-          playerName3
-          playerName4
+          player1Name
+          player2Name
+          player3Name
+          player4Name
           score1
           score2
           notes
@@ -140,14 +138,13 @@ export const onDeletePlayer = /* GraphQL */ `
         items {
           id
           plunks
-          selfPlunks
+          selfPlunk
           didWin
           plinks
           drinks
           points
           createdAt
           updatedAt
-          statsGameId
           playerStatsId
         }
         nextToken
@@ -226,20 +223,20 @@ export const onCreateGame = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      playerName1
-      playerName2
-      playerName3
-      playerName4
+      player1Name
+      player2Name
+      player3Name
+      player4Name
       score1
       score2
       player1Stats {
         id
         game {
           id
-          playerName1
-          playerName2
-          playerName3
-          playerName4
+          player1Name
+          player2Name
+          player3Name
+          player4Name
           score1
           score2
           notes
@@ -264,24 +261,23 @@ export const onCreateGame = /* GraphQL */ `
           updatedAt
         }
         plunks
-        selfPlunks
+        selfPlunk
         didWin
         plinks
         drinks
         points
         createdAt
         updatedAt
-        statsGameId
         playerStatsId
       }
       player2Stats {
         id
         game {
           id
-          playerName1
-          playerName2
-          playerName3
-          playerName4
+          player1Name
+          player2Name
+          player3Name
+          player4Name
           score1
           score2
           notes
@@ -306,24 +302,23 @@ export const onCreateGame = /* GraphQL */ `
           updatedAt
         }
         plunks
-        selfPlunks
+        selfPlunk
         didWin
         plinks
         drinks
         points
         createdAt
         updatedAt
-        statsGameId
         playerStatsId
       }
       player3Stats {
         id
         game {
           id
-          playerName1
-          playerName2
-          playerName3
-          playerName4
+          player1Name
+          player2Name
+          player3Name
+          player4Name
           score1
           score2
           notes
@@ -348,24 +343,23 @@ export const onCreateGame = /* GraphQL */ `
           updatedAt
         }
         plunks
-        selfPlunks
+        selfPlunk
         didWin
         plinks
         drinks
         points
         createdAt
         updatedAt
-        statsGameId
         playerStatsId
       }
       player4Stats {
         id
         game {
           id
-          playerName1
-          playerName2
-          playerName3
-          playerName4
+          player1Name
+          player2Name
+          player3Name
+          player4Name
           score1
           score2
           notes
@@ -390,14 +384,13 @@ export const onCreateGame = /* GraphQL */ `
           updatedAt
         }
         plunks
-        selfPlunks
+        selfPlunk
         didWin
         plinks
         drinks
         points
         createdAt
         updatedAt
-        statsGameId
         playerStatsId
       }
       notes
@@ -485,20 +478,20 @@ export const onUpdateGame = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      playerName1
-      playerName2
-      playerName3
-      playerName4
+      player1Name
+      player2Name
+      player3Name
+      player4Name
       score1
       score2
       player1Stats {
         id
         game {
           id
-          playerName1
-          playerName2
-          playerName3
-          playerName4
+          player1Name
+          player2Name
+          player3Name
+          player4Name
           score1
           score2
           notes
@@ -523,24 +516,23 @@ export const onUpdateGame = /* GraphQL */ `
           updatedAt
         }
         plunks
-        selfPlunks
+        selfPlunk
         didWin
         plinks
         drinks
         points
         createdAt
         updatedAt
-        statsGameId
         playerStatsId
       }
       player2Stats {
         id
         game {
           id
-          playerName1
-          playerName2
-          playerName3
-          playerName4
+          player1Name
+          player2Name
+          player3Name
+          player4Name
           score1
           score2
           notes
@@ -565,24 +557,23 @@ export const onUpdateGame = /* GraphQL */ `
           updatedAt
         }
         plunks
-        selfPlunks
+        selfPlunk
         didWin
         plinks
         drinks
         points
         createdAt
         updatedAt
-        statsGameId
         playerStatsId
       }
       player3Stats {
         id
         game {
           id
-          playerName1
-          playerName2
-          playerName3
-          playerName4
+          player1Name
+          player2Name
+          player3Name
+          player4Name
           score1
           score2
           notes
@@ -607,24 +598,23 @@ export const onUpdateGame = /* GraphQL */ `
           updatedAt
         }
         plunks
-        selfPlunks
+        selfPlunk
         didWin
         plinks
         drinks
         points
         createdAt
         updatedAt
-        statsGameId
         playerStatsId
       }
       player4Stats {
         id
         game {
           id
-          playerName1
-          playerName2
-          playerName3
-          playerName4
+          player1Name
+          player2Name
+          player3Name
+          player4Name
           score1
           score2
           notes
@@ -649,14 +639,13 @@ export const onUpdateGame = /* GraphQL */ `
           updatedAt
         }
         plunks
-        selfPlunks
+        selfPlunk
         didWin
         plinks
         drinks
         points
         createdAt
         updatedAt
-        statsGameId
         playerStatsId
       }
       notes
@@ -744,20 +733,20 @@ export const onDeleteGame = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      playerName1
-      playerName2
-      playerName3
-      playerName4
+      player1Name
+      player2Name
+      player3Name
+      player4Name
       score1
       score2
       player1Stats {
         id
         game {
           id
-          playerName1
-          playerName2
-          playerName3
-          playerName4
+          player1Name
+          player2Name
+          player3Name
+          player4Name
           score1
           score2
           notes
@@ -782,24 +771,23 @@ export const onDeleteGame = /* GraphQL */ `
           updatedAt
         }
         plunks
-        selfPlunks
+        selfPlunk
         didWin
         plinks
         drinks
         points
         createdAt
         updatedAt
-        statsGameId
         playerStatsId
       }
       player2Stats {
         id
         game {
           id
-          playerName1
-          playerName2
-          playerName3
-          playerName4
+          player1Name
+          player2Name
+          player3Name
+          player4Name
           score1
           score2
           notes
@@ -824,24 +812,23 @@ export const onDeleteGame = /* GraphQL */ `
           updatedAt
         }
         plunks
-        selfPlunks
+        selfPlunk
         didWin
         plinks
         drinks
         points
         createdAt
         updatedAt
-        statsGameId
         playerStatsId
       }
       player3Stats {
         id
         game {
           id
-          playerName1
-          playerName2
-          playerName3
-          playerName4
+          player1Name
+          player2Name
+          player3Name
+          player4Name
           score1
           score2
           notes
@@ -866,24 +853,23 @@ export const onDeleteGame = /* GraphQL */ `
           updatedAt
         }
         plunks
-        selfPlunks
+        selfPlunk
         didWin
         plinks
         drinks
         points
         createdAt
         updatedAt
-        statsGameId
         playerStatsId
       }
       player4Stats {
         id
         game {
           id
-          playerName1
-          playerName2
-          playerName3
-          playerName4
+          player1Name
+          player2Name
+          player3Name
+          player4Name
           score1
           score2
           notes
@@ -908,14 +894,13 @@ export const onDeleteGame = /* GraphQL */ `
           updatedAt
         }
         plunks
-        selfPlunks
+        selfPlunk
         didWin
         plinks
         drinks
         points
         createdAt
         updatedAt
-        statsGameId
         playerStatsId
       }
       notes
@@ -975,62 +960,58 @@ export const onCreateStats = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        playerName1
-        playerName2
-        playerName3
-        playerName4
+        player1Name
+        player2Name
+        player3Name
+        player4Name
         score1
         score2
         player1Stats {
           id
           plunks
-          selfPlunks
+          selfPlunk
           didWin
           plinks
           drinks
           points
           createdAt
           updatedAt
-          statsGameId
           playerStatsId
         }
         player2Stats {
           id
           plunks
-          selfPlunks
+          selfPlunk
           didWin
           plinks
           drinks
           points
           createdAt
           updatedAt
-          statsGameId
           playerStatsId
         }
         player3Stats {
           id
           plunks
-          selfPlunks
+          selfPlunk
           didWin
           plinks
           drinks
           points
           createdAt
           updatedAt
-          statsGameId
           playerStatsId
         }
         player4Stats {
           id
           plunks
-          selfPlunks
+          selfPlunk
           didWin
           plinks
           drinks
           points
           createdAt
           updatedAt
-          statsGameId
           playerStatsId
         }
         notes
@@ -1061,14 +1042,13 @@ export const onCreateStats = /* GraphQL */ `
         updatedAt
       }
       plunks
-      selfPlunks
+      selfPlunk
       didWin
       plinks
       drinks
       points
       createdAt
       updatedAt
-      statsGameId
       playerStatsId
     }
   }
@@ -1114,62 +1094,58 @@ export const onUpdateStats = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        playerName1
-        playerName2
-        playerName3
-        playerName4
+        player1Name
+        player2Name
+        player3Name
+        player4Name
         score1
         score2
         player1Stats {
           id
           plunks
-          selfPlunks
+          selfPlunk
           didWin
           plinks
           drinks
           points
           createdAt
           updatedAt
-          statsGameId
           playerStatsId
         }
         player2Stats {
           id
           plunks
-          selfPlunks
+          selfPlunk
           didWin
           plinks
           drinks
           points
           createdAt
           updatedAt
-          statsGameId
           playerStatsId
         }
         player3Stats {
           id
           plunks
-          selfPlunks
+          selfPlunk
           didWin
           plinks
           drinks
           points
           createdAt
           updatedAt
-          statsGameId
           playerStatsId
         }
         player4Stats {
           id
           plunks
-          selfPlunks
+          selfPlunk
           didWin
           plinks
           drinks
           points
           createdAt
           updatedAt
-          statsGameId
           playerStatsId
         }
         notes
@@ -1200,14 +1176,13 @@ export const onUpdateStats = /* GraphQL */ `
         updatedAt
       }
       plunks
-      selfPlunks
+      selfPlunk
       didWin
       plinks
       drinks
       points
       createdAt
       updatedAt
-      statsGameId
       playerStatsId
     }
   }
@@ -1253,62 +1228,58 @@ export const onDeleteStats = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        playerName1
-        playerName2
-        playerName3
-        playerName4
+        player1Name
+        player2Name
+        player3Name
+        player4Name
         score1
         score2
         player1Stats {
           id
           plunks
-          selfPlunks
+          selfPlunk
           didWin
           plinks
           drinks
           points
           createdAt
           updatedAt
-          statsGameId
           playerStatsId
         }
         player2Stats {
           id
           plunks
-          selfPlunks
+          selfPlunk
           didWin
           plinks
           drinks
           points
           createdAt
           updatedAt
-          statsGameId
           playerStatsId
         }
         player3Stats {
           id
           plunks
-          selfPlunks
+          selfPlunk
           didWin
           plinks
           drinks
           points
           createdAt
           updatedAt
-          statsGameId
           playerStatsId
         }
         player4Stats {
           id
           plunks
-          selfPlunks
+          selfPlunk
           didWin
           plinks
           drinks
           points
           createdAt
           updatedAt
-          statsGameId
           playerStatsId
         }
         notes
@@ -1339,14 +1310,13 @@ export const onDeleteStats = /* GraphQL */ `
         updatedAt
       }
       plunks
-      selfPlunks
+      selfPlunk
       didWin
       plinks
       drinks
       points
       createdAt
       updatedAt
-      statsGameId
       playerStatsId
     }
   }

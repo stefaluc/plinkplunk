@@ -1,4 +1,3 @@
-import Typography from "@mui/material/Typography";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
@@ -16,7 +15,7 @@ const Puller = styled(Box)(({ theme }) => ({
   left: 'calc(50% - 15px)',
 }));
 
-export default function GameDrawer({ gameDrawerIsOpen, toggleGameDrawer }) {
+export default function GameDrawer({ currentPlayer, players, gameDrawerIsOpen, toggleGameDrawer, setGames, games, setGameDrawerIsOpen }) {
   return (
     <SwipeableDrawer
       anchor="bottom"
@@ -28,8 +27,13 @@ export default function GameDrawer({ gameDrawerIsOpen, toggleGameDrawer }) {
       ModalProps={{
         keepMounted: true,
       }}
-
-
+      sx={{
+        '.MuiPaper-root': {
+          height: '85%',
+          overflow: 'scroll',
+        },
+      }}
+      id='game-drawer'
     >
       <Box
         sx={{
@@ -42,7 +46,14 @@ export default function GameDrawer({ gameDrawerIsOpen, toggleGameDrawer }) {
         }}
       >
         <Puller />
-        <GameForm />
+        <GameForm
+          currentPlayer={currentPlayer}
+          players={players}
+          toggleGameDrawer={toggleGameDrawer}
+          games={games}
+          setGames={setGames}
+          setGameDrawerIsOpen={setGameDrawerIsOpen}
+        />
       </Box>
     </SwipeableDrawer>
   );
