@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import * as React from "react";
 
-export default function OptionalStats({ playerNumber, setPlinks, setDrinks, setPoints }) {
+export default function OptionalStats({ player, setPlayer, playerLabel }) {
   return (
     <Accordion>
       <AccordionSummary
@@ -12,7 +12,7 @@ export default function OptionalStats({ playerNumber, setPlinks, setDrinks, setP
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography>Optional {playerNumber} Statistics</Typography>
+        <Typography>Optional {playerLabel} Statistics</Typography>
       </AccordionSummary>
       <AccordionDetails>
         <Typography>
@@ -22,6 +22,8 @@ export default function OptionalStats({ playerNumber, setPlinks, setDrinks, setP
               size="small"
               type="number"
               sx={{m:1, width: '30%'}}
+              value={player.plinks}
+              onChange={(e) => { setPlayer(prev => ({ ...prev, plinks: e.target.value })) }}
             />
           </Box>
           <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
@@ -30,6 +32,8 @@ export default function OptionalStats({ playerNumber, setPlinks, setDrinks, setP
               size="small"
               type="number"
               sx={{m:1, width: '30%'}}
+              value={player.drinks}
+              onChange={(e) => { setPlayer(prev => ({ ...prev, drinks: e.target.value })) }}
             />
           </Box>
           <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
@@ -38,6 +42,8 @@ export default function OptionalStats({ playerNumber, setPlinks, setDrinks, setP
               size="small"
               type="number"
               sx={{m:1, width: '30%'}}
+              value={player.points}
+              onChange={(e) => { setPlayer(prev => ({ ...prev, points: e.target.value })) }}
             />
           </Box>
         </Typography>

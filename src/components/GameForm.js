@@ -17,54 +17,23 @@ import {
 import {createGame, createStats, updateGame} from '../graphql/mutations';
 import {API, graphqlOperation} from "aws-amplify";
 import Box from "@mui/material/Box";
-import TeamForm from "./TeamForm";
+import TeamPlayerForm from "./TeamPlayerForm";
 
-const team = {
-  player1: {
-    name: '',
-    plunks: 0,
-    plunksChecked: false,
-    plinks: 0,
-    drinks: 0,
-    points: 0,
-  },
-  player2: {
-    name: '',
-    plunks: 0,
-    plunksChecked: false,
-    selfPlunk: false,
-    plinks: 0,
-    drinks: 0,
-    points: 0,
-  }
+const player = {
+  name: '',
+  plunks: 0,
+  plunksChecked: false,
+  selfPlunk: false,
+  plinks: null,
+  drinks: null,
+  points: null,
 }
 
 export default function GameForm({ currentPlayer, players, toggleGameDrawer, setGames, games, setGameDrawerIsOpen }) {
-  const [team1, setTeam1] = React.useState(team);
-  const [player1Name, setPlayer1Name] = React.useState('');
-  const [player2Name, setPlayer2Name] = React.useState('');
-  const [player3Name, setPlayer3Name] = React.useState('');
-  const [player4Name, setPlayer4Name] = React.useState('');
-  const [plunk1Checked, setPlunk1Checked] = React.useState(false);
-  const [plunk2Checked, setPlunk2Checked] = React.useState(false);
-  const [plunk3Checked, setPlunk3Checked] = React.useState(false);
-  const [plunk4Checked, setPlunk4Checked] = React.useState(false);
-  const [player1Plunks, setPlayer1Plunks] = React.useState(0);
-  const [player2Plunks, setPlayer2Plunks] = React.useState(0);
-  const [player3Plunks, setPlayer3Plunks] = React.useState(0);
-  const [player4Plunks, setPlayer4Plunks] = React.useState(0);
-  const [player1SelfPlunk, setPlayer1SelfPlunk] = React.useState(false);
-  const [player2SelfPlunk, setPlayer2SelfPlunk] = React.useState(false);
-  const [player3SelfPlunk, setPlayer3SelfPlunk] = React.useState(false);
-  const [player4SelfPlunk, setPlayer4SelfPlunk] = React.useState(false);
-  const [player1Plinks, setPlayer1Plinks] = React.useState(0);
-  const [player2Plinks, setPlayer2Plinks] = React.useState(0);
-  const [player3Plinks, setPlayer3Plinks] = React.useState(0);
-  const [player4Plinks, setPlayer4Plinks] = React.useState(0);
-  const [player1Drinks, setPlayer1Drinks] = React.useState(0);
-  const [player2Drinks, setPlayer2Drinks] = React.useState(0);
-  const [player3Drinks, setPlayer3Drinks] = React.useState(0);
-  const [player4Drinks, setPlayer4Drinks] = React.useState(0);
+  const [player1, setPlayer1] = React.useState(player);
+  const [player2, setPlayer2] = React.useState(player);
+  const [player3, setPlayer3] = React.useState(player);
+  const [player4, setPlayer4] = React.useState(player);
 
   const [score1, setScore1] = React.useState('');
   const [score2, setScore2] = React.useState('');
@@ -75,11 +44,12 @@ export default function GameForm({ currentPlayer, players, toggleGameDrawer, set
   const [errorMsg, setErrorMsg] = React.useState('');
 
   const resetState = () => {
-    setPlayer1Name(''); setPlayer2Name(''); setPlayer3Name(''); setPlayer4Name('');
-    setPlunk1Checked(false); setPlunk2Checked(false); setPlunk3Checked(false); setPlunk4Checked(false);
-    setPlayer1Plunks(0); setPlayer2Plunks(0); setPlayer3Plunks(0); setPlayer4Plunks(0);
-    setPlayer1SelfPlunk(false); setPlayer2SelfPlunk(false); setPlayer3SelfPlunk(false); setPlayer4SelfPlunk(false);
-    setScore1(''); setScore2('');
+    setPlayer1(player)
+    setPlayer2(player)
+    setPlayer3(player)
+    setPlayer4(player)
+    setScore1('');
+    setScore2('');
     setActiveStep(0);
   }
 
@@ -97,21 +67,21 @@ export default function GameForm({ currentPlayer, players, toggleGameDrawer, set
 
   const handleSubmit = async (e) => {
     setIsSubmittingForm(true);
-    const player1 = players.find(player => player.fullName === player1Name);
-    const player2 = players.find(player => player.fullName === player1Name);
-    const player3 = players.find(player => player.fullName === player1Name);
-    const player4 = players.find(player => player.fullName === player1Name);
+    const player1Db = players.find(player => player.fullName === player1.name);
+    const player2Db = players.find(player => player.fullName === player2.name);
+    const player3Db = players.find(player => player.fullName === player3.name);
+    const player4Db = players.find(player => player.fullName === player4.name);
 
     const game = {
       gameCreatorId: currentPlayer.cognitoId,
-      gamePlayer1Id: (!!player1) ? player1.cognitoId : null,
-      gamePlayer2Id: (!!player2) ? player2.cognitoId : null,
-      gamePlayer3Id: (!!player3) ? player3.cognitoId : null,
-      gamePlayer4Id: (!!player4) ? player4.cognitoId : null,
-      player1Name,
-      player2Name,
-      player3Name,
-      player4Name,
+      gamePlayer1Id: (!!player1Db) ? player1Db.cognitoId : null,
+      gamePlayer2Id: (!!player2Db) ? player2Db.cognitoId : null,
+      gamePlayer3Id: (!!player3Db) ? player3Db.cognitoId : null,
+      gamePlayer4Id: (!!player4Db) ? player4Db.cognitoId : null,
+      player1Name: player1.name,
+      player2Name: player2.name,
+      player3Name: player3.name,
+      player4Name: player4.name,
       score1,
       score2,
     }
@@ -121,12 +91,15 @@ export default function GameForm({ currentPlayer, players, toggleGameDrawer, set
       console.log('Create Game:');
       console.log(resGame);
       const statsGameId = resGame.data.createGame.id;
-      const team1DidWin = (score1 > score2 && !player1SelfPlunk && !player2SelfPlunk) || player3SelfPlunk || player4SelfPlunk;
-      const team2DidWin = (score2 > score1 && !player3SelfPlunk && !player4SelfPlunk) || player1SelfPlunk || player2SelfPlunk;
-      const statsPlayer1 = { plunks: player1Plunks, selfPlunk: player1SelfPlunk, playerStatsId: (!!player1) ? player1.cognitoId : null, didWin: team1DidWin };
-      const statsPlayer2 = { plunks: player2Plunks, selfPlunk: player2SelfPlunk, playerStatsId: (!!player2) ? player2.cognitoId : null, didWin: team1DidWin };
-      const statsPlayer3 = { plunks: player3Plunks, selfPlunk: player3SelfPlunk, playerStatsId: (!!player3) ? player3.cognitoId : null, didWin: team2DidWin };
-      const statsPlayer4 = { plunks: player4Plunks, selfPlunk: player4SelfPlunk, playerStatsId: (!!player4) ? player4.cognitoId : null, didWin: team2DidWin };
+
+      const team1DidWin = (score1 > score2 && !player1.selfPlunk && !player2.selfPlunk) || player3.selfPlunk || player4.selfPlunk;
+      const team2DidWin = (score2 > score1 && !player3.selfPlunk && !player4.selfPlunk) || player1.selfPlunk || player2.selfPlunk;
+
+      const statsPlayer1 = { plunks: player1.plunks, selfPlunk: player1.selfPlunk, playerStatsId: (!!player1Db) ? player1Db.cognitoId : null, didWin: team1DidWin, plinks: player1.plinks, drinks: player1.drinks, points: player1.points };
+      const statsPlayer2 = { plunks: player2.plunks, selfPlunk: player2.selfPlunk, playerStatsId: (!!player2Db) ? player2Db.cognitoId : null, didWin: team1DidWin, plinks: player2.plinks, drinks: player2.drinks, points: player2.points };
+      const statsPlayer3 = { plunks: player3.plunks, selfPlunk: player3.selfPlunk, playerStatsId: (!!player3Db) ? player3Db.cognitoId : null, didWin: team2DidWin, plinks: player3.plinks, drinks: player3.drinks, points: player3.points };
+      const statsPlayer4 = { plunks: player4.plunks, selfPlunk: player4.selfPlunk, playerStatsId: (!!player4Db) ? player4Db.cognitoId : null, didWin: team2DidWin, plinks: player4.plinks, drinks: player4.drinks, points: player4.points };
+
       const createStats1 = API.graphql(graphqlOperation(createStats, { input: { ...statsPlayer1 }}));
       const createStats2 = API.graphql(graphqlOperation(createStats, { input: { ...statsPlayer2 }}));
       const createStats3 = API.graphql(graphqlOperation(createStats, { input: { ...statsPlayer3 }}));
@@ -178,8 +151,14 @@ export default function GameForm({ currentPlayer, players, toggleGameDrawer, set
   }
 
   const isValidForm = () => {
-    return player1Name && player2Name && player3Name && player4Name &&
-      score1 && score2;
+    return (
+      player1.name &&
+      player2.name &&
+      player3.name &&
+      player4.name &&
+      score1 &&
+      score2
+    );
   }
 
   return (
@@ -191,33 +170,28 @@ export default function GameForm({ currentPlayer, players, toggleGameDrawer, set
               TEAM 1 PLAYERS
             </StepLabel>
             <StepContent>
-              <TeamForm
-                number={1}
+
+              <TeamPlayerForm
                 options={players.map(player => player.fullName)}
-                player1Name={player1Name}
-                player2Name={player2Name}
-                setPlayer1Name={setPlayer1Name}
-                setPlayer2Name={setPlayer2Name}
-                player1Plunks={player1Plunks}
-                player2Plunks={player2Plunks}
-                setPlayer1Plunks={setPlayer1Plunks}
-                setPlayer2Plunks={setPlayer2Plunks}
-                player1SelfPlunk={player1SelfPlunk}
-                player2SelfPlunk={player2SelfPlunk}
-                setPlayer1SelfPlunk={setPlayer1SelfPlunk}
-                setPlayer2SelfPlunk={setPlayer2SelfPlunk}
-                plunk1Checked={plunk1Checked}
-                plunk2Checked={plunk2Checked}
-                setPlunk1Checked={setPlunk1Checked}
-                setPlunk2Checked={setPlunk2Checked}
+                player={player1}
+                setPlayer={setPlayer1}
+                playerLabel={"Player 1"}
               />
-              <Box sx={{ mb: 2, mt: 2 }}>
+              <TeamPlayerForm
+                options={players.map(player => player.fullName)}
+                player={player2}
+                setPlayer={setPlayer2}
+                playerLabel={"Player 2"}
+              />
+
+
+             <Box sx={{ mb: 2, mt: 2 }}>
                 <div>
                   <Button
                     variant="contained"
                     onClick={handleNext}
                     sx={{ mt: 1, mr: 1 }}
-                    disabled={!(player1Name && player2Name)}
+                    disabled={!(player1.name && player2.name)}
                   >
                     Continue
                   </Button>
@@ -230,25 +204,17 @@ export default function GameForm({ currentPlayer, players, toggleGameDrawer, set
               TEAM 2 PLAYERS
             </StepLabel>
             <StepContent>
-              <TeamForm
-                number={2}
+              <TeamPlayerForm
                 options={players.map(player => player.fullName)}
-                player3Name={player3Name}
-                player4Name={player4Name}
-                setPlayer3Name={setPlayer3Name}
-                setPlayer4Name={setPlayer4Name}
-                player3Plunks={player3Plunks}
-                player4Plunks={player4Plunks}
-                setPlayer3Plunks={setPlayer3Plunks}
-                setPlayer4Plunks={setPlayer4Plunks}
-                player3SelfPlunk={player3SelfPlunk}
-                player4SelfPlunk={player4SelfPlunk}
-                setPlayer3SelfPlunk={setPlayer3SelfPlunk}
-                setPlayer4SelfPlunk={setPlayer4SelfPlunk}
-                plunk3Checked={plunk3Checked}
-                plunk4Checked={plunk4Checked}
-                setPlunk3Checked={setPlunk3Checked}
-                setPlunk4Checked={setPlunk4Checked}
+                player={player3}
+                setPlayer={setPlayer3}
+                playerLabel={"Player 3"}
+              />
+              <TeamPlayerForm
+                options={players.map(player => player.fullName)}
+                player={player4}
+                setPlayer={setPlayer4}
+                playerLabel={"Player 4"}
               />
               <Box sx={{ mb: 2, mt: 2 }}>
                 <div>
@@ -256,7 +222,7 @@ export default function GameForm({ currentPlayer, players, toggleGameDrawer, set
                     variant="contained"
                     onClick={handleNext}
                     sx={{ mt: 1, mr: 1 }}
-                    disabled={!(player2Name && player4Name)}
+                    disabled={!(player3.name && player4.name)}
                   >
                     Continue
                   </Button>

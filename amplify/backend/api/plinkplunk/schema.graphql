@@ -37,7 +37,7 @@ type Stats @model {
   plunks: Int! @default(value: "0")
   selfPlunk: Boolean!
   didWin: Boolean!
-  plinks: Int @default(value: "0")
-  drinks: Int @default(value: "0")
-  points: Int @default(value: "0")
+  plinks: Int
+  drinks: Int
+  points: Int
 }

@@ -11,6 +11,8 @@ import BottomAppBar from "./components/BottomAppBar";
 import GamesDisplay from "./components/GamesDisplay";
 import GameDrawer from "./components/GameDrawer";
 import SideDrawer from "./components/SideDrawer";
+import HallOfFame from "./components/HallOfFame";
+import HallOfShame from "./components/HallOfShame";
 
 Amplify.configure(awsconfig);
 
@@ -30,6 +32,8 @@ const App = ({ signOut }) => {
   const [currentPlayer, setCurrentPlayer] = React.useState({});
   const [gameDrawerIsOpen, setGameDrawerIsOpen] = React.useState(false);
   const [sideDrawerIsOpen, setSideDrawerIsOpen] = React.useState(false);
+  const [isFameOpen, setIsFameOpen] = React.useState(false);
+  const [isShameOpen, setIsShameOpen] = React.useState(false);
   const [profilePic, setProfilePic] = React.useState(null);
   const [games, setGames] = React.useState([]);
   const [gamesAreLoading, setGamesAreLoading] = React.useState(false);
@@ -41,6 +45,22 @@ const App = ({ signOut }) => {
 
   const toggleSideDrawer = (newOpen) => () => {
     setSideDrawerIsOpen(newOpen);
+  };
+
+  const handleOpenFame = () => {
+    setIsFameOpen(true);
+  };
+
+  const handleCloseFame = () => {
+    setIsFameOpen(false);
+  };
+
+  const handleOpenShame = () => {
+    setIsShameOpen(true);
+  };
+
+  const handleCloseShame = () => {
+    setIsShameOpen(false);
   };
 
   React.useEffect(() => {
@@ -114,6 +134,18 @@ const App = ({ signOut }) => {
         <SideDrawer
           sideDrawerIsOpen={sideDrawerIsOpen}
           toggleSideDrawer={toggleSideDrawer}
+          handleOpenFame={handleOpenFame}
+          handleOpenShame={handleOpenShame}
+        />
+        <HallOfFame
+          games={games}
+          isFameOpen={isFameOpen}
+          handleCloseFame={handleCloseFame}
+        />
+        <HallOfShame
+          games={games}
+          isShameOpen={isShameOpen}
+          handleCloseShame={handleCloseShame}
         />
         <BottomAppBar
           toggleSideDrawer={toggleSideDrawer}

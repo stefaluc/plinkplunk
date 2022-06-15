@@ -5,7 +5,7 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import {Warning} from "@mui/icons-material";
 import Box from "@mui/material/Box";
 
-export default function SideDrawer({ sideDrawerIsOpen, toggleSideDrawer }) {
+export default function SideDrawer({ sideDrawerIsOpen, toggleSideDrawer, handleOpenFame, handleOpenShame }) {
   return (
     <SwipeableDrawer
       anchor='left'
@@ -20,7 +20,7 @@ export default function SideDrawer({ sideDrawerIsOpen, toggleSideDrawer }) {
       >
         <List>
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={handleOpenFame}>
               <ListItemIcon>
                 <EmojiEventsIcon />
               </ListItemIcon>
@@ -29,7 +29,7 @@ export default function SideDrawer({ sideDrawerIsOpen, toggleSideDrawer }) {
           </ListItem>
           <Divider />
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={handleOpenShame}>
               <ListItemIcon>
                 <Warning />
               </ListItemIcon>
