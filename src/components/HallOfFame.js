@@ -6,13 +6,9 @@ import {
   DialogContentText,
   DialogTitle
 } from "@mui/material";
-import {API, graphqlOperation} from "aws-amplify";
 import * as React from "react";
-import {listStats} from "../graphql/queries";
 
 export default function HallOfFame({ handleCloseFame, isFameOpen, games }) {
-  const [isLoading, setIsLoading] = React.useState(false);
-
   const wins = new Map();
   const plunks = new Map();
   games.forEach(game => {
@@ -21,21 +17,12 @@ export default function HallOfFame({ handleCloseFame, isFameOpen, games }) {
     for (let i = 0; i < 4; i++) {
       const stat = (stats[i]) ? stats[i] : { didWin: false, plunks: 0};
       const name = names[i];
-      if (isNaN(wins.get(name))) wins.set(name, 0)
+      if (isNaN(wins.get(name))) wins.set(name, 0);
       if (stat.didWin) wins.set(name, wins.get(name) + 1);
-      if (isNaN(plunks.get(name))) plunks.set(name, 0)
+      if (isNaN(plunks.get(name))) plunks.set(name, 0);
       plunks.set(name, plunks.get(name) + stat.plunks);
     }
   });
-  const winRender = [];
-  wins.forEach((number, name) => {
-    winRender.push(<li>{name}: {number}</li>)
-  })
-
-  const plunksRender = [];
-  plunks.forEach((number, name) => {
-    plunksRender.push(<li>{name}: {number}</li>)
-  })
 
   return (
     <>
@@ -48,13 +35,17 @@ export default function HallOfFame({ handleCloseFame, isFameOpen, games }) {
         <DialogContent>
           <DialogContentText>Most Wins:</DialogContentText>
           <ol>
-            {winRender}
+            {[...wins].sort((a, b) => b[1] - a[1]).map(win =>
+              <li key={win[0]}>{win[0]}: {win[1]}</li>
+            )}
           </ol>
         </DialogContent>
         <DialogContent>
           <DialogContentText>Most Plunks:</DialogContentText>
           <ol>
-            {plunksRender}
+            {[...plunks].sort((a, b) => b[1] - a[1]).map(plunk =>
+              <li key={plunk[0]}>{plunk[0]}: {plunk[1]}</li>
+            )}
           </ol>
         </DialogContent>
         <DialogActions>

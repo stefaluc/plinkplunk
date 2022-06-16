@@ -19,7 +19,11 @@ const StyledFab = styled(Fab)({
   margin: '0 auto',
 });
 
-export default function BottomAppBar({ signOut, toggleGameDrawer, toggleSideDrawer, cognitoId, profilePic }) {
+const getNameInitials = (fullName) => {
+  return fullName.match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase();
+}
+
+export default function BottomAppBar({ signOut, toggleGameDrawer, toggleSideDrawer, cognitoId, profilePic, currentPlayer, setProfilePic }) {
   return (
     <React.Fragment>
       <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0 }}>
@@ -34,13 +38,14 @@ export default function BottomAppBar({ signOut, toggleGameDrawer, toggleSideDraw
           <AppBarMenu
             signOut={signOut}
             cognitoId={cognitoId}
+            setProfilePic={setProfilePic}
           />
           <Avatar
             sx={{ width: '30px', height: '30px', fontSize: '12px'}}
             alt="Profile Picture"
             src={profilePic}
           >
-            LS
+            {!!currentPlayer.fullName && getNameInitials(currentPlayer.fullName)}
           </Avatar>
         </Toolbar>
       </AppBar>

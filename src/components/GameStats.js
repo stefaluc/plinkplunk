@@ -4,7 +4,6 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle, Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody
 } from "@mui/material";
 import {API, graphqlOperation} from "aws-amplify";

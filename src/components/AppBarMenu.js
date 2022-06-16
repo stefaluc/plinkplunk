@@ -10,7 +10,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import {updatePlayer} from "../graphql/mutations";
 
-export default function AppBarMenu({ cognitoId, signOut }) {
+export default function AppBarMenu({ cognitoId, signOut, setProfilePic }) {
   const [imageFile, setImageFile] = React.useState(null);
   const [isUploading, setIsUploading] = React.useState(null);
   const [progressLoaded, setProgressLoaded] = React.useState(0);
@@ -30,9 +30,9 @@ export default function AppBarMenu({ cognitoId, signOut }) {
     const file = uploadRef.current.files[0];
     const type = `${file.type.split('/')[1]}`;
     setImageFile(file);
+    setIsUploading(true);
     Storage.put(`profile-picture`, file, {
       progressCallback(progress) {
-        setIsUploading(progress.loaded !== progress.total);
         setProgressLoaded(progress.loaded);
         setProgressTotal(progress.total);
         console.log(`Uploaded: ${progress.loaded}/${progress.total}`);
@@ -40,7 +40,15 @@ export default function AppBarMenu({ cognitoId, signOut }) {
       level: 'protected',
       contentType: file.type,
     }).then(res => {
+      console.log('Storage.put')
       console.log(res);
+      setProfilePic(res)
+      Storage.get('profile-picture', {level: 'protected'}).then(res => {
+        console.log('Storage.get')
+        console.log(res);
+        setProfilePic(res);
+        setIsUploading(false);
+      });
       API.graphql(graphqlOperation(updatePlayer, {
         input: {
           cognitoId,

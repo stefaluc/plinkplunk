@@ -95,10 +95,10 @@ export default function GameForm({ currentPlayer, players, toggleGameDrawer, set
       const team1DidWin = (score1 > score2 && !player1.selfPlunk && !player2.selfPlunk) || player3.selfPlunk || player4.selfPlunk;
       const team2DidWin = (score2 > score1 && !player3.selfPlunk && !player4.selfPlunk) || player1.selfPlunk || player2.selfPlunk;
 
-      const statsPlayer1 = { plunks: player1.plunks, selfPlunk: player1.selfPlunk, playerStatsId: (!!player1Db) ? player1Db.cognitoId : null, didWin: team1DidWin, plinks: player1.plinks, drinks: player1.drinks, points: player1.points };
-      const statsPlayer2 = { plunks: player2.plunks, selfPlunk: player2.selfPlunk, playerStatsId: (!!player2Db) ? player2Db.cognitoId : null, didWin: team1DidWin, plinks: player2.plinks, drinks: player2.drinks, points: player2.points };
-      const statsPlayer3 = { plunks: player3.plunks, selfPlunk: player3.selfPlunk, playerStatsId: (!!player3Db) ? player3Db.cognitoId : null, didWin: team2DidWin, plinks: player3.plinks, drinks: player3.drinks, points: player3.points };
-      const statsPlayer4 = { plunks: player4.plunks, selfPlunk: player4.selfPlunk, playerStatsId: (!!player4Db) ? player4Db.cognitoId : null, didWin: team2DidWin, plinks: player4.plinks, drinks: player4.drinks, points: player4.points };
+      const statsPlayer1 = { plunks: player1.plunks, selfPlunk: player1.selfPlunk, didWin: team1DidWin, plinks: player1.plinks, drinks: player1.drinks, points: player1.points };
+      const statsPlayer2 = { plunks: player2.plunks, selfPlunk: player2.selfPlunk, didWin: team1DidWin, plinks: player2.plinks, drinks: player2.drinks, points: player2.points };
+      const statsPlayer3 = { plunks: player3.plunks, selfPlunk: player3.selfPlunk, didWin: team2DidWin, plinks: player3.plinks, drinks: player3.drinks, points: player3.points };
+      const statsPlayer4 = { plunks: player4.plunks, selfPlunk: player4.selfPlunk, didWin: team2DidWin, plinks: player4.plinks, drinks: player4.drinks, points: player4.points };
 
       const createStats1 = API.graphql(graphqlOperation(createStats, { input: { ...statsPlayer1 }}));
       const createStats2 = API.graphql(graphqlOperation(createStats, { input: { ...statsPlayer2 }}));

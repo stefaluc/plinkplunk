@@ -231,35 +231,6 @@ export const onCreateGame = /* GraphQL */ `
       score2
       player1Stats {
         id
-        game {
-          id
-          player1Name
-          player2Name
-          player3Name
-          player4Name
-          score1
-          score2
-          notes
-          createdAt
-          updatedAt
-          playerGamesId
-          gamePlayer1Id
-          gamePlayer2Id
-          gamePlayer3Id
-          gamePlayer4Id
-          gameCreatorId
-          gamePlayer1StatsId
-          gamePlayer2StatsId
-          gamePlayer3StatsId
-          gamePlayer4StatsId
-        }
-        player {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
         plunks
         selfPlunk
         didWin
@@ -272,35 +243,6 @@ export const onCreateGame = /* GraphQL */ `
       }
       player2Stats {
         id
-        game {
-          id
-          player1Name
-          player2Name
-          player3Name
-          player4Name
-          score1
-          score2
-          notes
-          createdAt
-          updatedAt
-          playerGamesId
-          gamePlayer1Id
-          gamePlayer2Id
-          gamePlayer3Id
-          gamePlayer4Id
-          gameCreatorId
-          gamePlayer1StatsId
-          gamePlayer2StatsId
-          gamePlayer3StatsId
-          gamePlayer4StatsId
-        }
-        player {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
         plunks
         selfPlunk
         didWin
@@ -313,35 +255,6 @@ export const onCreateGame = /* GraphQL */ `
       }
       player3Stats {
         id
-        game {
-          id
-          player1Name
-          player2Name
-          player3Name
-          player4Name
-          score1
-          score2
-          notes
-          createdAt
-          updatedAt
-          playerGamesId
-          gamePlayer1Id
-          gamePlayer2Id
-          gamePlayer3Id
-          gamePlayer4Id
-          gameCreatorId
-          gamePlayer1StatsId
-          gamePlayer2StatsId
-          gamePlayer3StatsId
-          gamePlayer4StatsId
-        }
-        player {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
         plunks
         selfPlunk
         didWin
@@ -354,35 +267,6 @@ export const onCreateGame = /* GraphQL */ `
       }
       player4Stats {
         id
-        game {
-          id
-          player1Name
-          player2Name
-          player3Name
-          player4Name
-          score1
-          score2
-          notes
-          createdAt
-          updatedAt
-          playerGamesId
-          gamePlayer1Id
-          gamePlayer2Id
-          gamePlayer3Id
-          gamePlayer4Id
-          gameCreatorId
-          gamePlayer1StatsId
-          gamePlayer2StatsId
-          gamePlayer3StatsId
-          gamePlayer4StatsId
-        }
-        player {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
         plunks
         selfPlunk
         didWin
@@ -486,35 +370,6 @@ export const onUpdateGame = /* GraphQL */ `
       score2
       player1Stats {
         id
-        game {
-          id
-          player1Name
-          player2Name
-          player3Name
-          player4Name
-          score1
-          score2
-          notes
-          createdAt
-          updatedAt
-          playerGamesId
-          gamePlayer1Id
-          gamePlayer2Id
-          gamePlayer3Id
-          gamePlayer4Id
-          gameCreatorId
-          gamePlayer1StatsId
-          gamePlayer2StatsId
-          gamePlayer3StatsId
-          gamePlayer4StatsId
-        }
-        player {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
         plunks
         selfPlunk
         didWin
@@ -527,35 +382,6 @@ export const onUpdateGame = /* GraphQL */ `
       }
       player2Stats {
         id
-        game {
-          id
-          player1Name
-          player2Name
-          player3Name
-          player4Name
-          score1
-          score2
-          notes
-          createdAt
-          updatedAt
-          playerGamesId
-          gamePlayer1Id
-          gamePlayer2Id
-          gamePlayer3Id
-          gamePlayer4Id
-          gameCreatorId
-          gamePlayer1StatsId
-          gamePlayer2StatsId
-          gamePlayer3StatsId
-          gamePlayer4StatsId
-        }
-        player {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
         plunks
         selfPlunk
         didWin
@@ -568,35 +394,6 @@ export const onUpdateGame = /* GraphQL */ `
       }
       player3Stats {
         id
-        game {
-          id
-          player1Name
-          player2Name
-          player3Name
-          player4Name
-          score1
-          score2
-          notes
-          createdAt
-          updatedAt
-          playerGamesId
-          gamePlayer1Id
-          gamePlayer2Id
-          gamePlayer3Id
-          gamePlayer4Id
-          gameCreatorId
-          gamePlayer1StatsId
-          gamePlayer2StatsId
-          gamePlayer3StatsId
-          gamePlayer4StatsId
-        }
-        player {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
         plunks
         selfPlunk
         didWin
@@ -609,35 +406,6 @@ export const onUpdateGame = /* GraphQL */ `
       }
       player4Stats {
         id
-        game {
-          id
-          player1Name
-          player2Name
-          player3Name
-          player4Name
-          score1
-          score2
-          notes
-          createdAt
-          updatedAt
-          playerGamesId
-          gamePlayer1Id
-          gamePlayer2Id
-          gamePlayer3Id
-          gamePlayer4Id
-          gameCreatorId
-          gamePlayer1StatsId
-          gamePlayer2StatsId
-          gamePlayer3StatsId
-          gamePlayer4StatsId
-        }
-        player {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
         plunks
         selfPlunk
         didWin
@@ -741,35 +509,6 @@ export const onDeleteGame = /* GraphQL */ `
       score2
       player1Stats {
         id
-        game {
-          id
-          player1Name
-          player2Name
-          player3Name
-          player4Name
-          score1
-          score2
-          notes
-          createdAt
-          updatedAt
-          playerGamesId
-          gamePlayer1Id
-          gamePlayer2Id
-          gamePlayer3Id
-          gamePlayer4Id
-          gameCreatorId
-          gamePlayer1StatsId
-          gamePlayer2StatsId
-          gamePlayer3StatsId
-          gamePlayer4StatsId
-        }
-        player {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
         plunks
         selfPlunk
         didWin
@@ -782,35 +521,6 @@ export const onDeleteGame = /* GraphQL */ `
       }
       player2Stats {
         id
-        game {
-          id
-          player1Name
-          player2Name
-          player3Name
-          player4Name
-          score1
-          score2
-          notes
-          createdAt
-          updatedAt
-          playerGamesId
-          gamePlayer1Id
-          gamePlayer2Id
-          gamePlayer3Id
-          gamePlayer4Id
-          gameCreatorId
-          gamePlayer1StatsId
-          gamePlayer2StatsId
-          gamePlayer3StatsId
-          gamePlayer4StatsId
-        }
-        player {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
         plunks
         selfPlunk
         didWin
@@ -823,35 +533,6 @@ export const onDeleteGame = /* GraphQL */ `
       }
       player3Stats {
         id
-        game {
-          id
-          player1Name
-          player2Name
-          player3Name
-          player4Name
-          score1
-          score2
-          notes
-          createdAt
-          updatedAt
-          playerGamesId
-          gamePlayer1Id
-          gamePlayer2Id
-          gamePlayer3Id
-          gamePlayer4Id
-          gameCreatorId
-          gamePlayer1StatsId
-          gamePlayer2StatsId
-          gamePlayer3StatsId
-          gamePlayer4StatsId
-        }
-        player {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
         plunks
         selfPlunk
         didWin
@@ -864,35 +545,6 @@ export const onDeleteGame = /* GraphQL */ `
       }
       player4Stats {
         id
-        game {
-          id
-          player1Name
-          player2Name
-          player3Name
-          player4Name
-          score1
-          score2
-          notes
-          createdAt
-          updatedAt
-          playerGamesId
-          gamePlayer1Id
-          gamePlayer2Id
-          gamePlayer3Id
-          gamePlayer4Id
-          gameCreatorId
-          gamePlayer1StatsId
-          gamePlayer2StatsId
-          gamePlayer3StatsId
-          gamePlayer4StatsId
-        }
-        player {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
         plunks
         selfPlunk
         didWin
@@ -923,124 +575,6 @@ export const onCreateStats = /* GraphQL */ `
   subscription OnCreateStats {
     onCreateStats {
       id
-      game {
-        id
-        player1 {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
-        player2 {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
-        player3 {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
-        player4 {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
-        creator {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
-        player1Name
-        player2Name
-        player3Name
-        player4Name
-        score1
-        score2
-        player1Stats {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
-        player2Stats {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
-        player3Stats {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
-        player4Stats {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
-        notes
-        createdAt
-        updatedAt
-        playerGamesId
-        gamePlayer1Id
-        gamePlayer2Id
-        gamePlayer3Id
-        gamePlayer4Id
-        gameCreatorId
-        gamePlayer1StatsId
-        gamePlayer2StatsId
-        gamePlayer3StatsId
-        gamePlayer4StatsId
-      }
-      player {
-        cognitoId
-        fullName
-        hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
       plunks
       selfPlunk
       didWin
@@ -1057,124 +591,6 @@ export const onUpdateStats = /* GraphQL */ `
   subscription OnUpdateStats {
     onUpdateStats {
       id
-      game {
-        id
-        player1 {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
-        player2 {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
-        player3 {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
-        player4 {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
-        creator {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
-        player1Name
-        player2Name
-        player3Name
-        player4Name
-        score1
-        score2
-        player1Stats {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
-        player2Stats {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
-        player3Stats {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
-        player4Stats {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
-        notes
-        createdAt
-        updatedAt
-        playerGamesId
-        gamePlayer1Id
-        gamePlayer2Id
-        gamePlayer3Id
-        gamePlayer4Id
-        gameCreatorId
-        gamePlayer1StatsId
-        gamePlayer2StatsId
-        gamePlayer3StatsId
-        gamePlayer4StatsId
-      }
-      player {
-        cognitoId
-        fullName
-        hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
       plunks
       selfPlunk
       didWin
@@ -1191,124 +607,6 @@ export const onDeleteStats = /* GraphQL */ `
   subscription OnDeleteStats {
     onDeleteStats {
       id
-      game {
-        id
-        player1 {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
-        player2 {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
-        player3 {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
-        player4 {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
-        creator {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
-        player1Name
-        player2Name
-        player3Name
-        player4Name
-        score1
-        score2
-        player1Stats {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
-        player2Stats {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
-        player3Stats {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
-        player4Stats {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
-        notes
-        createdAt
-        updatedAt
-        playerGamesId
-        gamePlayer1Id
-        gamePlayer2Id
-        gamePlayer3Id
-        gamePlayer4Id
-        gameCreatorId
-        gamePlayer1StatsId
-        gamePlayer2StatsId
-        gamePlayer3StatsId
-        gamePlayer4StatsId
-      }
-      player {
-        cognitoId
-        fullName
-        hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
       plunks
       selfPlunk
       didWin

@@ -55,7 +55,7 @@ export default function TeamPlayerForm({ options, player, setPlayer, playerLabel
               <Checkbox
                 sx={{ml:3}}
                 size="medium"
-                color="secondary"
+                color="error"
                 checked={player.selfPlunk}
                 onChange={(e) => { setPlayer(prev => ({ ...prev, selfPlunk: e.target.checked })) }}
               />}

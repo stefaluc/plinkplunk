@@ -6,9 +6,7 @@ import {
   DialogContentText,
   DialogTitle
 } from "@mui/material";
-import {API, graphqlOperation} from "aws-amplify";
 import * as React from "react";
-import {listStats} from "../graphql/queries";
 
 export default function HallOfShame({ handleCloseShame, isShameOpen, games }) {
   const losses = new Map();
@@ -25,15 +23,6 @@ export default function HallOfShame({ handleCloseShame, isShameOpen, games }) {
       if (stat.selfPlunk) selfPlunks.set(name, selfPlunks.get(name) + 1);
     }
   });
-  const lossesRender = [];
-  losses.forEach((number, name) => {
-    lossesRender.push(<li>{name}: {number}</li>)
-  })
-
-  const selfPlunksRender = [];
-  selfPlunks.forEach((number, name) => {
-    selfPlunksRender.push(<li>{name}: {number}</li>)
-  })
 
   return (
     <>
@@ -46,13 +35,17 @@ export default function HallOfShame({ handleCloseShame, isShameOpen, games }) {
         <DialogContent>
           <DialogContentText>Most Losses:</DialogContentText>
           <ol>
-            {lossesRender}
+            {[...losses].sort((a, b) => b[1] - a[1]).map(loss =>
+              <li key={loss[0]}>{loss[0]}: {loss[1]}</li>
+            )}
           </ol>
         </DialogContent>
         <DialogContent>
           <DialogContentText>Most Self Plunks:</DialogContentText>
           <ol>
-            {selfPlunksRender}
+            {[...selfPlunks].sort((a, b) => b[1] - a[1]).map(plunk =>
+              <li key={plunk[0]}>{plunk[0]}: {plunk[1]}</li>
+            )}
           </ol>
         </DialogContent>
         <DialogActions>

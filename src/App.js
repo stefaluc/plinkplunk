@@ -89,6 +89,7 @@ const App = ({ signOut }) => {
               .then(res => {
                 console.log("createPlayer: ");
                 console.log(res);
+                setCurrentPlayer(res.data.createPlayer);
               });
           }
         });
@@ -100,7 +101,7 @@ const App = ({ signOut }) => {
     API.graphql(graphqlOperation(listGames)).then(res => {
       console.log("listGames: ");
       console.log(res);
-      setGames(res.data.listGames.items);
+      setGames(res.data.listGames.items.sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt)));
       setGamesAreLoading(false);
     });
   }, []);
@@ -153,6 +154,8 @@ const App = ({ signOut }) => {
           cognitoId={cognitoId}
           profilePic={profilePic}
           signOut={signOut}
+          currentPlayer={currentPlayer}
+          setProfilePic={setProfilePic}
         />
       </main>
     </ThemeProvider>

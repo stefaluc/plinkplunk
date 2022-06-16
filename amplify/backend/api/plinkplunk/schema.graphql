@@ -32,8 +32,6 @@ type Game @model {
 
 type Stats @model {
   id: ID!
-  game: Game
-  player: Player
   plunks: Int! @default(value: "0")
   selfPlunk: Boolean!
   didWin: Boolean!
