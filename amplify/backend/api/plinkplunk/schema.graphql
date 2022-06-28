@@ -28,6 +28,7 @@ type Game @model {
   player3Stats: Stats @hasOne
   player4Stats: Stats @hasOne
   notes: String
+  location: String
 }
 
 type Stats @model {

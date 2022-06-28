@@ -1,4 +1,3 @@
-import Typography from "@mui/material/Typography";
 import List from "@mui/material/List";
 import * as React from "react";
 import Game from "./Game";

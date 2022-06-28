@@ -37,6 +37,8 @@ export default function GameForm({ currentPlayer, players, toggleGameDrawer, set
 
   const [score1, setScore1] = React.useState('');
   const [score2, setScore2] = React.useState('');
+  const [location, setLocation] = React.useState('');
+  const [notes, setNotes] = React.useState('');
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [isSubmittingForm, setIsSubmittingForm] = React.useState(false);
