@@ -12,12 +12,14 @@ import {
   DialogTitle,
   DialogActions,
   DialogContentText,
-  DialogContent
+  DialogContent, Accordion, AccordionSummary, AccordionDetails
 } from "@mui/material";
 import {createGame, createStats, updateGame} from '../graphql/mutations';
 import {API, graphqlOperation} from "aws-amplify";
 import Box from "@mui/material/Box";
 import TeamPlayerForm from "./TeamPlayerForm";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Typography from "@mui/material/Typography";
 
 const player = {
   name: '',
@@ -37,8 +39,8 @@ export default function GameForm({ currentPlayer, players, toggleGameDrawer, set
 
   const [score1, setScore1] = React.useState('');
   const [score2, setScore2] = React.useState('');
-  const [location, setLocation] = React.useState('');
-  const [notes, setNotes] = React.useState('');
+  const [location, setLocation] = React.useState(null);
+  const [notes, setNotes] = React.useState(null);
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [isSubmittingForm, setIsSubmittingForm] = React.useState(false);
@@ -86,6 +88,8 @@ export default function GameForm({ currentPlayer, players, toggleGameDrawer, set
       player4Name: player4.name,
       score1,
       score2,
+      location,
+      notes,
     }
     console.log(game)
 
@@ -97,10 +101,10 @@ export default function GameForm({ currentPlayer, players, toggleGameDrawer, set
       const team1DidWin = (score1 > score2 && !player1.selfPlunk && !player2.selfPlunk) || player3.selfPlunk || player4.selfPlunk;
       const team2DidWin = (score2 > score1 && !player3.selfPlunk && !player4.selfPlunk) || player1.selfPlunk || player2.selfPlunk;
 
-      const statsPlayer1 = { plunks: player1.plunks, selfPlunk: player1.selfPlunk, didWin: team1DidWin, plinks: player1.plinks, drinks: player1.drinks, points: player1.points };
-      const statsPlayer2 = { plunks: player2.plunks, selfPlunk: player2.selfPlunk, didWin: team1DidWin, plinks: player2.plinks, drinks: player2.drinks, points: player2.points };
-      const statsPlayer3 = { plunks: player3.plunks, selfPlunk: player3.selfPlunk, didWin: team2DidWin, plinks: player3.plinks, drinks: player3.drinks, points: player3.points };
-      const statsPlayer4 = { plunks: player4.plunks, selfPlunk: player4.selfPlunk, didWin: team2DidWin, plinks: player4.plinks, drinks: player4.drinks, points: player4.points };
+      const statsPlayer1 = { plunks: player1.plunks === '' ? 0 : player1.plunks, selfPlunk: player1.selfPlunk, didWin: team1DidWin, plinks: player1.plinks, drinks: player1.drinks, points: player1.points };
+      const statsPlayer2 = { plunks: player2.plunks === '' ? 0 : player2.plunks, selfPlunk: player2.selfPlunk, didWin: team1DidWin, plinks: player2.plinks, drinks: player2.drinks, points: player2.points };
+      const statsPlayer3 = { plunks: player3.plunks === '' ? 0 : player3.plunks, selfPlunk: player3.selfPlunk, didWin: team2DidWin, plinks: player3.plinks, drinks: player3.drinks, points: player3.points };
+      const statsPlayer4 = { plunks: player4.plunks === '' ? 0 : player4.plunks, selfPlunk: player4.selfPlunk, didWin: team2DidWin, plinks: player4.plinks, drinks: player4.drinks, points: player4.points };
 
       const createStats1 = API.graphql(graphqlOperation(createStats, { input: { ...statsPlayer1 }}));
       const createStats2 = API.graphql(graphqlOperation(createStats, { input: { ...statsPlayer2 }}));
@@ -269,7 +273,41 @@ export default function GameForm({ currentPlayer, players, toggleGameDrawer, set
                   </Box>
                 </Box>
               </Box>
-              <Box sx={{ mb: 2 }}>
+              <Box>
+              <Accordion>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography>Other (Optional)</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Box>
+                    <Box>
+                      <Box sx={{fontSize: '16px'}}>Location:</Box>
+                      <TextField
+                        size="small"
+                        type="text"
+                        sx={{mt:1, mb: 1, width: '70%'}}
+                        value={location}
+                        onChange={(e) => { setLocation(e.target.value) }}
+                      />
+                    </Box>
+                    <Box>
+                      <Box sx={{fontSize: '16px'}}>Notes:</Box>
+                      <TextField
+                        multiline
+                        sx={{mt:1, mb: 1, width: '100%'}}
+                        value={notes}
+                        onChange={(e) => { setNotes(e.target.value) }}
+                      />
+                    </Box>
+                  </Box>
+                </AccordionDetails>
+              </Accordion>
+              </Box>
+              <Box sx={{ mt: 2, mb: 2 }}>
                 <div>
                   <Button
                     onClick={handleBack}

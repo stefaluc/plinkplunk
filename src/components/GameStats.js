@@ -9,6 +9,7 @@ import {
 import {API, graphqlOperation} from "aws-amplify";
 import {deleteGame, deleteStats} from "../graphql/mutations";
 import * as React from "react";
+import Box from "@mui/material/Box";
 
 export default function GameStats({ game, setGames, games, currentPlayer, handleCloseStats, isStatsOpen }) {
   const [isDeletingGame, setIsDeletingGame] = React.useState(false);
@@ -82,6 +83,16 @@ export default function GameStats({ game, setGames, games, currentPlayer, handle
               </TableBody>
             </Table>
           </TableContainer>
+          <Box sx={{mt: 3}}>
+            <span style={{fontWeight: 'bold'}}>Location:&nbsp;</span>
+            {game.location === null ? 'N/A' : game.location}
+          </Box>
+          <Box>
+            <span style={{fontWeight: 'bold'}}>Notes:</span>
+            <Box>
+              {game.notes === null ? 'N/A' : game.notes}
+            </Box>
+          </Box>
         </DialogContent>
         <DialogActions>
           {playerCanDelete &&

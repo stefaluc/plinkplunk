@@ -17,6 +17,7 @@ export const getPlayer = /* GraphQL */ `
           score1
           score2
           notes
+          location
           createdAt
           updatedAt
           playerGamesId
@@ -208,6 +209,7 @@ export const getGame = /* GraphQL */ `
         playerStatsId
       }
       notes
+      location
       createdAt
       updatedAt
       playerGamesId
@@ -322,6 +324,7 @@ export const listGames = /* GraphQL */ `
           playerStatsId
         }
         notes
+        location
         createdAt
         updatedAt
         playerGamesId

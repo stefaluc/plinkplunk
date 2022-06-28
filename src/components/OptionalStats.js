@@ -12,7 +12,7 @@ export default function OptionalStats({ player, setPlayer, playerLabel }) {
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography>Optional {playerLabel} Statistics</Typography>
+        <Typography>{playerLabel} Statistics (Optional)</Typography>
       </AccordionSummary>
       <AccordionDetails>
         <Typography>

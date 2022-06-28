@@ -8,7 +8,7 @@ import SportsBarTwoToneIcon from '@mui/icons-material/SportsBarTwoTone';
 export default function GamesDisplay({ currentPlayer, setGames, games, gamesAreLoading }) {
   return (
     <React.Fragment>
-      <Box sx={{m:2, mb: 0, fontSize: '24px', display: 'flex', alignItems: 'center'}} >
+      <Box sx={{m:2, mb: 0, mt: 2, fontSize: '24px', display: 'flex', alignItems: 'center'}} >
         <SportsBarTwoToneIcon sx={{color: '#ffdb00', fontSize: '48px'}} />
         <span style={{marginLeft: '10px', letterSpacing: '4px'}}>
           <div>PLINK AND A POINT!</div>

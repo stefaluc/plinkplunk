@@ -17,6 +17,7 @@ export const onCreatePlayer = /* GraphQL */ `
           score1
           score2
           notes
+          location
           createdAt
           updatedAt
           playerGamesId
@@ -68,6 +69,7 @@ export const onUpdatePlayer = /* GraphQL */ `
           score1
           score2
           notes
+          location
           createdAt
           updatedAt
           playerGamesId
@@ -119,6 +121,7 @@ export const onDeletePlayer = /* GraphQL */ `
           score1
           score2
           notes
+          location
           createdAt
           updatedAt
           playerGamesId
@@ -278,6 +281,7 @@ export const onCreateGame = /* GraphQL */ `
         playerStatsId
       }
       notes
+      location
       createdAt
       updatedAt
       playerGamesId
@@ -417,6 +421,7 @@ export const onUpdateGame = /* GraphQL */ `
         playerStatsId
       }
       notes
+      location
       createdAt
       updatedAt
       playerGamesId
@@ -556,6 +561,7 @@ export const onDeleteGame = /* GraphQL */ `
         playerStatsId
       }
       notes
+      location
       createdAt
       updatedAt
       playerGamesId

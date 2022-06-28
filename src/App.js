@@ -101,7 +101,14 @@ const App = ({ signOut }) => {
     API.graphql(graphqlOperation(listGames)).then(res => {
       console.log("listGames: ");
       console.log(res);
-      setGames(res.data.listGames.items.sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt)));
+      const { items } = res.data.listGames;
+      const games = items.filter((item) => (
+        item.player1Stats !== null &&
+        item.player2Stats !== null &&
+        item.player3Stats !== null &&
+        item.player4Stats !== null
+      ));
+      setGames(games.sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt)));
       setGamesAreLoading(false);
     });
   }, []);
