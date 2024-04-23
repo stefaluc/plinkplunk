@@ -6,7 +6,7 @@
     "defaultAuthType": {
       "mode": "API_KEY",
       "expirationTime": 365,
-      "apiKeyExpirationDate": "2025-04-23T19:58:35.191Z",
+      "apiKeyExpirationDate": "2025-04-23T20:37:36.326Z",
       "keyDescription": "plinkplunk-amplify-dev"
     },
     "conflictResolution": {},

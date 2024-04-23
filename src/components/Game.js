@@ -34,7 +34,7 @@ export default function Game({ currentPlayer, games, setGames, game }) {
      [game.player3, setPlayer3Pic],
      [game.player4, setPlayer4Pic]
     ].forEach(args => {
-      if (args[0] !== null && args[0].hasProfilePicture) {
+      if (args[0] !== null && args[0]?.hasProfilePicture) {
         Storage.get('profile-picture', {
           level: 'protected',
           identityId: args[0].cognitoId,
@@ -52,14 +52,14 @@ export default function Game({ currentPlayer, games, setGames, game }) {
       </ListSubheader>
       <ListItem button onClick={handleOpenStats}>
         <Box sx={{ position: 'absolute', left: '40%', top: '25%', display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-          <Box sx={{color: game.player1Stats.didWin ? '#4caf50' : '#ff1744', fontSize: '32px', marginRight: '10px'}}>
+          <Box sx={{color: game.player1Stats?.didWin ? '#4caf50' : '#ff1744', fontSize: '32px', marginRight: '10px'}}>
             {game.score1}
           </Box>
           <Avatar sx={{width: '20px', height: '20px', fontSize: '8px', bgcolor: '#263238'}}
                   variant="circle">
             VS
           </Avatar>
-          <Box sx={{color: game.player3Stats.didWin ? '#4caf50' : '#ff1744', fontSize: '32px', marginLeft: '10px'}}>
+          <Box sx={{color: game.player3Stats?.didWin ? '#4caf50' : '#ff1744', fontSize: '32px', marginLeft: '10px'}}>
             {game.score2}
           </Box>
         </Box>
@@ -77,12 +77,12 @@ export default function Game({ currentPlayer, games, setGames, game }) {
               <Box sx={{fontSize: '14px'}}>
                 {game.player1Name}
               </Box>
-              {!!game.player1Stats.plunks &&
+              {!!game.player1Stats?.plunks &&
                 <Box sx={{fontWeight: 'bold', fontSize: '12px', color: '#666'}}>
-                  Plunks: {game.player1Stats.plunks}
+                  Plunks: {game.player1Stats?.plunks}
                 </Box>
               }
-              {!!game.player1Stats.selfPlunk &&
+              {!!game.player1Stats?.selfPlunk &&
                 <Box sx={{fontWeight: 'bold', fontSize: '12px', color: '#FF1744'}}>
                   SELF PLUNK
                 </Box>
@@ -95,13 +95,13 @@ export default function Game({ currentPlayer, games, setGames, game }) {
               <Box sx={{fontSize: '14px', display: 'flex', justifyContent: 'flex-end'}}>
                 {game.player3Name}
               </Box>
-              {!!game.player3Stats.plunks &&
+              {!!game.player3Stats?.plunks &&
                 <Box
                   sx={{fontWeight: 'bold', fontSize: '12px', color: '#666', display: 'flex', justifyContent: 'flex-end'}}>
-                  Plunks: {game.player3Stats.plunks}
+                  Plunks: {game.player3Stats?.plunks}
                 </Box>
               }
-              {!!game.player3Stats.selfPlunk &&
+              {!!game.player3Stats?.selfPlunk &&
               <Box sx={{fontWeight: 'bold', fontSize: '12px', color: '#FF1744'}}>
                 SELF PLUNK
               </Box>
@@ -128,12 +128,12 @@ export default function Game({ currentPlayer, games, setGames, game }) {
               <Box sx={{fontSize: '14px'}}>
                 {game.player2Name}
               </Box>
-              {!!game.player2Stats.plunks &&
+              {!!game.player2Stats?.plunks &&
               <Box sx={{fontWeight: 'bold', fontSize: '12px', color: '#666'}}>
-                Plunks: {game.player2Stats.plunks}
+                Plunks: {game.player2Stats?.plunks}
               </Box>
               }
-              {!!game.player2Stats.selfPlunk &&
+              {!!game.player2Stats?.selfPlunk &&
               <Box sx={{fontWeight: 'bold', fontSize: '12px', color: '#FF1744'}}>
                 SELF PLUNK
               </Box>
@@ -146,13 +146,13 @@ export default function Game({ currentPlayer, games, setGames, game }) {
               <Box sx={{fontSize: '14px', display: 'flex', justifyContent: 'flex-end'}}>
                 {game.player4Name}
               </Box>
-              {!!game.player4Stats.plunks &&
+              {!!game.player4Stats?.plunks &&
               <Box
                 sx={{fontWeight: 'bold', fontSize: '12px', color: '#666', display: 'flex', justifyContent: 'flex-end'}}>
-                Plunks: {game.player4Stats.plunks}
+                Plunks: {game.player4Stats?.plunks}
               </Box>
               }
-              {!!game.player4Stats.selfPlunk &&
+              {!!game.player4Stats?.selfPlunk &&
               <Box sx={{fontWeight: 'bold', fontSize: '12px', color: '#FF1744'}}>
                 SELF PLUNK
               </Box>

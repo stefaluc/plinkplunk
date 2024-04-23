@@ -14,7 +14,17 @@ import SideDrawer from "./components/SideDrawer";
 import HallOfFame from "./components/HallOfFame";
 import HallOfShame from "./components/HallOfShame";
 
-Amplify.configure(awsconfig);
+Amplify.configure({
+  ...awsconfig,
+  API: {
+    GraphQL: {
+      endpoint: 'https://o77b4mprlneqlbgqigpybjkdvy.appsync-api.us-east-1.amazonaws.com/graphql',
+      region: 'us-east-1',
+      defaultAuthMode: 'apiKey',
+      apiKey: 'da2-sehfvumeuvckdp2pingdvcdowm'
+    }
+  }
+});
 
 const theme = createTheme({
   palette: {
