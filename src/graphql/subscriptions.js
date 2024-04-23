@@ -2,229 +2,108 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreatePlayer = /* GraphQL */ `
-  subscription OnCreatePlayer {
-    onCreatePlayer {
+  subscription OnCreatePlayer($filter: ModelSubscriptionPlayerFilterInput) {
+    onCreatePlayer(filter: $filter) {
       cognitoId
       fullName
       hasProfilePicture
       games {
-        items {
-          id
-          player1Name
-          player2Name
-          player3Name
-          player4Name
-          score1
-          score2
-          notes
-          location
-          createdAt
-          updatedAt
-          playerGamesId
-          gamePlayer1Id
-          gamePlayer2Id
-          gamePlayer3Id
-          gamePlayer4Id
-          gameCreatorId
-          gamePlayer1StatsId
-          gamePlayer2StatsId
-          gamePlayer3StatsId
-          gamePlayer4StatsId
-        }
         nextToken
+        __typename
       }
       stats {
-        items {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
         nextToken
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
 export const onUpdatePlayer = /* GraphQL */ `
-  subscription OnUpdatePlayer {
-    onUpdatePlayer {
+  subscription OnUpdatePlayer($filter: ModelSubscriptionPlayerFilterInput) {
+    onUpdatePlayer(filter: $filter) {
       cognitoId
       fullName
       hasProfilePicture
       games {
-        items {
-          id
-          player1Name
-          player2Name
-          player3Name
-          player4Name
-          score1
-          score2
-          notes
-          location
-          createdAt
-          updatedAt
-          playerGamesId
-          gamePlayer1Id
-          gamePlayer2Id
-          gamePlayer3Id
-          gamePlayer4Id
-          gameCreatorId
-          gamePlayer1StatsId
-          gamePlayer2StatsId
-          gamePlayer3StatsId
-          gamePlayer4StatsId
-        }
         nextToken
+        __typename
       }
       stats {
-        items {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
         nextToken
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
 export const onDeletePlayer = /* GraphQL */ `
-  subscription OnDeletePlayer {
-    onDeletePlayer {
+  subscription OnDeletePlayer($filter: ModelSubscriptionPlayerFilterInput) {
+    onDeletePlayer(filter: $filter) {
       cognitoId
       fullName
       hasProfilePicture
       games {
-        items {
-          id
-          player1Name
-          player2Name
-          player3Name
-          player4Name
-          score1
-          score2
-          notes
-          location
-          createdAt
-          updatedAt
-          playerGamesId
-          gamePlayer1Id
-          gamePlayer2Id
-          gamePlayer3Id
-          gamePlayer4Id
-          gameCreatorId
-          gamePlayer1StatsId
-          gamePlayer2StatsId
-          gamePlayer3StatsId
-          gamePlayer4StatsId
-        }
         nextToken
+        __typename
       }
       stats {
-        items {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
         nextToken
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
 export const onCreateGame = /* GraphQL */ `
-  subscription OnCreateGame {
-    onCreateGame {
+  subscription OnCreateGame($filter: ModelSubscriptionGameFilterInput) {
+    onCreateGame(filter: $filter) {
       id
       player1 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player2 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player3 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player4 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       creator {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player1Name
       player2Name
@@ -243,6 +122,7 @@ export const onCreateGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       player2Stats {
         id
@@ -255,6 +135,7 @@ export const onCreateGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       player3Stats {
         id
@@ -267,6 +148,7 @@ export const onCreateGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       player4Stats {
         id
@@ -279,6 +161,7 @@ export const onCreateGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       notes
       location
@@ -294,77 +177,53 @@ export const onCreateGame = /* GraphQL */ `
       gamePlayer2StatsId
       gamePlayer3StatsId
       gamePlayer4StatsId
+      __typename
     }
   }
 `;
 export const onUpdateGame = /* GraphQL */ `
-  subscription OnUpdateGame {
-    onUpdateGame {
+  subscription OnUpdateGame($filter: ModelSubscriptionGameFilterInput) {
+    onUpdateGame(filter: $filter) {
       id
       player1 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player2 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player3 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player4 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       creator {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player1Name
       player2Name
@@ -383,6 +242,7 @@ export const onUpdateGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       player2Stats {
         id
@@ -395,6 +255,7 @@ export const onUpdateGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       player3Stats {
         id
@@ -407,6 +268,7 @@ export const onUpdateGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       player4Stats {
         id
@@ -419,6 +281,7 @@ export const onUpdateGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       notes
       location
@@ -434,77 +297,53 @@ export const onUpdateGame = /* GraphQL */ `
       gamePlayer2StatsId
       gamePlayer3StatsId
       gamePlayer4StatsId
+      __typename
     }
   }
 `;
 export const onDeleteGame = /* GraphQL */ `
-  subscription OnDeleteGame {
-    onDeleteGame {
+  subscription OnDeleteGame($filter: ModelSubscriptionGameFilterInput) {
+    onDeleteGame(filter: $filter) {
       id
       player1 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player2 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player3 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player4 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       creator {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player1Name
       player2Name
@@ -523,6 +362,7 @@ export const onDeleteGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       player2Stats {
         id
@@ -535,6 +375,7 @@ export const onDeleteGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       player3Stats {
         id
@@ -547,6 +388,7 @@ export const onDeleteGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       player4Stats {
         id
@@ -559,6 +401,7 @@ export const onDeleteGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       notes
       location
@@ -574,12 +417,13 @@ export const onDeleteGame = /* GraphQL */ `
       gamePlayer2StatsId
       gamePlayer3StatsId
       gamePlayer4StatsId
+      __typename
     }
   }
 `;
 export const onCreateStats = /* GraphQL */ `
-  subscription OnCreateStats {
-    onCreateStats {
+  subscription OnCreateStats($filter: ModelSubscriptionStatsFilterInput) {
+    onCreateStats(filter: $filter) {
       id
       plunks
       selfPlunk
@@ -590,12 +434,13 @@ export const onCreateStats = /* GraphQL */ `
       createdAt
       updatedAt
       playerStatsId
+      __typename
     }
   }
 `;
 export const onUpdateStats = /* GraphQL */ `
-  subscription OnUpdateStats {
-    onUpdateStats {
+  subscription OnUpdateStats($filter: ModelSubscriptionStatsFilterInput) {
+    onUpdateStats(filter: $filter) {
       id
       plunks
       selfPlunk
@@ -606,12 +451,13 @@ export const onUpdateStats = /* GraphQL */ `
       createdAt
       updatedAt
       playerStatsId
+      __typename
     }
   }
 `;
 export const onDeleteStats = /* GraphQL */ `
-  subscription OnDeleteStats {
-    onDeleteStats {
+  subscription OnDeleteStats($filter: ModelSubscriptionStatsFilterInput) {
+    onDeleteStats(filter: $filter) {
       id
       plunks
       selfPlunk
@@ -622,6 +468,7 @@ export const onDeleteStats = /* GraphQL */ `
       createdAt
       updatedAt
       playerStatsId
+      __typename
     }
   }
 `;

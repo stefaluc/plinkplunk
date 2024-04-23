@@ -8,48 +8,16 @@ export const getPlayer = /* GraphQL */ `
       fullName
       hasProfilePicture
       games {
-        items {
-          id
-          player1Name
-          player2Name
-          player3Name
-          player4Name
-          score1
-          score2
-          notes
-          location
-          createdAt
-          updatedAt
-          playerGamesId
-          gamePlayer1Id
-          gamePlayer2Id
-          gamePlayer3Id
-          gamePlayer4Id
-          gameCreatorId
-          gamePlayer1StatsId
-          gamePlayer2StatsId
-          gamePlayer3StatsId
-          gamePlayer4StatsId
-        }
         nextToken
+        __typename
       }
       stats {
-        items {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
         nextToken
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -72,16 +40,12 @@ export const listPlayers = /* GraphQL */ `
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -93,66 +57,41 @@ export const getGame = /* GraphQL */ `
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player2 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player3 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player4 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       creator {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player1Name
       player2Name
@@ -171,6 +110,7 @@ export const getGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       player2Stats {
         id
@@ -183,6 +123,7 @@ export const getGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       player3Stats {
         id
@@ -195,6 +136,7 @@ export const getGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       player4Stats {
         id
@@ -207,6 +149,7 @@ export const getGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       notes
       location
@@ -222,6 +165,7 @@ export const getGame = /* GraphQL */ `
       gamePlayer2StatsId
       gamePlayer3StatsId
       gamePlayer4StatsId
+      __typename
     }
   }
 `;
@@ -234,95 +178,12 @@ export const listGames = /* GraphQL */ `
     listGames(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        player1 {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
-        player2 {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
-        player3 {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
-        player4 {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
-        creator {
-          cognitoId
-          fullName
-          hasProfilePicture
-          createdAt
-          updatedAt
-        }
         player1Name
         player2Name
         player3Name
         player4Name
         score1
         score2
-        player1Stats {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
-        player2Stats {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
-        player3Stats {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
-        player4Stats {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
         notes
         location
         createdAt
@@ -337,8 +198,10 @@ export const listGames = /* GraphQL */ `
         gamePlayer2StatsId
         gamePlayer3StatsId
         gamePlayer4StatsId
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -355,6 +218,7 @@ export const getStats = /* GraphQL */ `
       createdAt
       updatedAt
       playerStatsId
+      __typename
     }
   }
 `;
@@ -376,8 +240,10 @@ export const listStats = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;

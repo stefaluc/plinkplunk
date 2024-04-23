@@ -3,10 +3,13 @@
   "serviceConfiguration": {
     "apiName": "plinkplunk",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/Users/stefanskil/projects/plinkplunk/amplify/backend/api/plinkplunk/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
-      "expirationTime": 7
-    }
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2025-04-23T19:58:35.191Z",
+      "keyDescription": "plinkplunk-amplify-dev"
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": []
   }
 }

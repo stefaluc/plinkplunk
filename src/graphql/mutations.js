@@ -11,48 +11,16 @@ export const createPlayer = /* GraphQL */ `
       fullName
       hasProfilePicture
       games {
-        items {
-          id
-          player1Name
-          player2Name
-          player3Name
-          player4Name
-          score1
-          score2
-          notes
-          location
-          createdAt
-          updatedAt
-          playerGamesId
-          gamePlayer1Id
-          gamePlayer2Id
-          gamePlayer3Id
-          gamePlayer4Id
-          gameCreatorId
-          gamePlayer1StatsId
-          gamePlayer2StatsId
-          gamePlayer3StatsId
-          gamePlayer4StatsId
-        }
         nextToken
+        __typename
       }
       stats {
-        items {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
         nextToken
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -66,48 +34,16 @@ export const updatePlayer = /* GraphQL */ `
       fullName
       hasProfilePicture
       games {
-        items {
-          id
-          player1Name
-          player2Name
-          player3Name
-          player4Name
-          score1
-          score2
-          notes
-          location
-          createdAt
-          updatedAt
-          playerGamesId
-          gamePlayer1Id
-          gamePlayer2Id
-          gamePlayer3Id
-          gamePlayer4Id
-          gameCreatorId
-          gamePlayer1StatsId
-          gamePlayer2StatsId
-          gamePlayer3StatsId
-          gamePlayer4StatsId
-        }
         nextToken
+        __typename
       }
       stats {
-        items {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
         nextToken
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -121,48 +57,16 @@ export const deletePlayer = /* GraphQL */ `
       fullName
       hasProfilePicture
       games {
-        items {
-          id
-          player1Name
-          player2Name
-          player3Name
-          player4Name
-          score1
-          score2
-          notes
-          location
-          createdAt
-          updatedAt
-          playerGamesId
-          gamePlayer1Id
-          gamePlayer2Id
-          gamePlayer3Id
-          gamePlayer4Id
-          gameCreatorId
-          gamePlayer1StatsId
-          gamePlayer2StatsId
-          gamePlayer3StatsId
-          gamePlayer4StatsId
-        }
         nextToken
+        __typename
       }
       stats {
-        items {
-          id
-          plunks
-          selfPlunk
-          didWin
-          plinks
-          drinks
-          points
-          createdAt
-          updatedAt
-          playerStatsId
-        }
         nextToken
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -177,66 +81,41 @@ export const createGame = /* GraphQL */ `
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player2 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player3 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player4 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       creator {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player1Name
       player2Name
@@ -255,6 +134,7 @@ export const createGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       player2Stats {
         id
@@ -267,6 +147,7 @@ export const createGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       player3Stats {
         id
@@ -279,6 +160,7 @@ export const createGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       player4Stats {
         id
@@ -291,6 +173,7 @@ export const createGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       notes
       location
@@ -306,6 +189,7 @@ export const createGame = /* GraphQL */ `
       gamePlayer2StatsId
       gamePlayer3StatsId
       gamePlayer4StatsId
+      __typename
     }
   }
 `;
@@ -320,66 +204,41 @@ export const updateGame = /* GraphQL */ `
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player2 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player3 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player4 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       creator {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player1Name
       player2Name
@@ -398,6 +257,7 @@ export const updateGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       player2Stats {
         id
@@ -410,6 +270,7 @@ export const updateGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       player3Stats {
         id
@@ -422,6 +283,7 @@ export const updateGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       player4Stats {
         id
@@ -434,6 +296,7 @@ export const updateGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       notes
       location
@@ -449,6 +312,7 @@ export const updateGame = /* GraphQL */ `
       gamePlayer2StatsId
       gamePlayer3StatsId
       gamePlayer4StatsId
+      __typename
     }
   }
 `;
@@ -463,66 +327,41 @@ export const deleteGame = /* GraphQL */ `
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player2 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player3 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player4 {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       creator {
         cognitoId
         fullName
         hasProfilePicture
-        games {
-          nextToken
-        }
-        stats {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       player1Name
       player2Name
@@ -541,6 +380,7 @@ export const deleteGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       player2Stats {
         id
@@ -553,6 +393,7 @@ export const deleteGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       player3Stats {
         id
@@ -565,6 +406,7 @@ export const deleteGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       player4Stats {
         id
@@ -577,6 +419,7 @@ export const deleteGame = /* GraphQL */ `
         createdAt
         updatedAt
         playerStatsId
+        __typename
       }
       notes
       location
@@ -592,6 +435,7 @@ export const deleteGame = /* GraphQL */ `
       gamePlayer2StatsId
       gamePlayer3StatsId
       gamePlayer4StatsId
+      __typename
     }
   }
 `;
@@ -611,6 +455,7 @@ export const createStats = /* GraphQL */ `
       createdAt
       updatedAt
       playerStatsId
+      __typename
     }
   }
 `;
@@ -630,6 +475,7 @@ export const updateStats = /* GraphQL */ `
       createdAt
       updatedAt
       playerStatsId
+      __typename
     }
   }
 `;
@@ -649,6 +495,7 @@ export const deleteStats = /* GraphQL */ `
       createdAt
       updatedAt
       playerStatsId
+      __typename
     }
   }
 `;
